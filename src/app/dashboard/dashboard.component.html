@@ -16,6 +16,7 @@
 			[currentState]='currentState' 
 			[currentModuleId]="currentModuleId"
 			[currentLang]="currentLang"
+
 			(subModulesList)="setSubModules($event)"
 			(select)="filterUniversitiesBy($event)"></university-aside> 
 		</div>
@@ -27,6 +28,7 @@
 		<div class="main-container st-block-style vert-scroll">
 			<lessons-list 
 			[loading]="loading"
+			(gotoInfo)='gotoInfo($event)'
 			[currentLang]="currentLang"
 			[lessons]='lessons'
 			(loadMore)='loadMoreLessons()'

@@ -2,12 +2,12 @@
 // we get the unversity of the aside
 // we get a list of lessons / fennler
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Lesson } from '../../shared/lesson.model';
 
 declare var $:any;
 declare var Masonry:any;
 declare var imagesLoaded:any;
 @Component({
-	
 	selector: 'lessons-list',
 	templateUrl: 'lessons-list.component.html'
 })
@@ -16,6 +16,8 @@ export class LessonsListComponent implements OnInit {
 	@Input() currentLang;
 	@Output() loadMore = new EventEmitter<any>();
 	@Input() lessons;
+	@Output() gotoInfo = new EventEmitter<Lesson>();
+
 	ngOnInit(){
 		// get students list by lessonid from a test back end
 		// initial query to only ask for the first page	
@@ -43,5 +45,8 @@ export class LessonsListComponent implements OnInit {
 			  msnry.layout();
 			});
 		});
+	}
+	goInfo(lesson: Lesson){
+		this.gotoInfo.emit(lesson);
 	}
 }

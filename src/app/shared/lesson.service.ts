@@ -52,7 +52,7 @@ export class LessonService {
 			.toPromise()
 			.then(response => {
 				console.log('response.json().data for getting Lesson by id', response.json().data);
-				return this.toUniDetail(response.json().data, token);
+				return this.toLessonDetail(response.json().data, token);
 			})
             .catch(this.handleError);
 		});
@@ -72,19 +72,22 @@ export class LessonService {
 		let obj = this.setDefaults(r);
 		let uni = <Lesson>({
 			id: obj.id,
-			name: obj.name,
+			name: obj.subject.value,
 			studentCount: obj.studentCount,
-			teacherCount: obj.employeeCount,
-			street: obj.address,
-			imgUrl: `http://192.168.1.78:8082/UnibookHsisRest/structures/${obj.id}/logo?token=${token}`
+			language: obj.eduLang.value,
+			year: obj.eduYear.value,
+			semester: obj.semester.value
 		});
 		return uni;
 	}
 	//to Uni mapping function that's used in the detail view
-	toUniDetail(r:any, token: any): Lesson{
+	toLessonDetail(r:any, token: any): Lesson{
 		//iterate thorugh the properties of the object
 		//if null, add empty to the property including the .value or whatever
 		let obj = this.setDefaults(r);
+		/* we'll use empty one before we map it further*/
+		let uni;
+		/*
 		let uni = <Lesson>({
 			id: obj.id,
 			name: obj.name,
@@ -102,7 +105,7 @@ export class LessonService {
 			campusArea: obj.structureInfo.campusArea,
 			pcCount: obj.structureInfo.pcCount,
 			departmentCount: obj.fakulteCount
-		});
+		});*/
 		return uni;
 	}
 	// setting default values to object properties in case 
@@ -110,7 +113,9 @@ export class LessonService {
 	setDefaults(obj) {
 		//console.log('setting defaults in: ', obj)
 		//array of properties  in Lessons that require 
-		let simpleProperties = ["name", "about", "address"]
+		//for now, no properties that need their data set
+		let simpleProperties = [];
+		//let simpleProperties = ["name", "about", "address"]
 		// let's only check for properties that we care about
 		for (var i = 0; i < simpleProperties.length; i++){
 			let property = simpleProperties[i];
