@@ -1,0 +1,21 @@
+<custom-masonry *ngIf="lessons"></custom-masonry>
+<custom-loader *ngIf="loading"></custom-loader>
+<div *ngIf="!lessons&& !loading">no lessons to show</div>
+<div class="content lesson-list" *ngIf="lessons">
+	<div class="structure-inder">
+		<div class="row">
+			<div *ngFor="let lesson of lessons" class="col-lg-4 col=-md-4 col-sm-6 col-xs-12 structure-inder-block" (click)="goInfo(university)">
+				<ul>
+					<li class="lessons-head">
+						<h3>F</h3>
+					</li>
+					<li>
+						<p>{{lesson.name | translate: currentLang }}</p>
+						<p>{{lesson.director | translate: currentLang }}</p>
+					</li>
+				</ul>
+			</div>
+			<button class="loader-btn" (click)="loadMoreLessons()">Load More:</button>
+		</div>
+	</div>
+</div>

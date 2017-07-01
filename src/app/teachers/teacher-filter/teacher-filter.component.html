@@ -1,0 +1,44 @@
+<a class="select-faculty-btn" filterByUni>
+	<span>Bütün fakültələr</span>
+	<i class="fa fa-filter" aria-hidden="true"></i>
+</a>
+<div class="wrapper-modal">
+
+	<div class="modal">
+		<div class="modal-header">
+			<h4 class="modal-title pull-left">Strukturu seçin</h4>
+			<button type="button" class="close pull-right" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<form>
+				<div class="form-group">
+					<h5>Ali Tehsil Müəssəsiəsi</h5>
+					<ng-select
+						[options]="universityOptions"
+						(selected)="getFacultiesByUniversityId($event.value);"
+						placeholder="Seçin!"
+						[allowClear]="true">
+					</ng-select>
+				</div>
+				
+				<div class="form-group">
+					<h5>Ali Tehsil Müəssəsiəsi</h5>
+					<ng-select
+						[options]="faculties"
+						[disabled]="disabled"
+						placeholder="Fakültə seçin!"
+						(selected)="setFaculty($event.value)"
+						[allowClear]="true">
+					</ng-select>
+				</div>
+
+				<button class="btn btn-default, submitter" (click)="setOrgId(uni_id, faculty_id)">Təstiq et</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="modal-overlay"></div>
+
+</div>

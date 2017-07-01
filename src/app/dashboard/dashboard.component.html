@@ -1,0 +1,40 @@
+<custom-header></custom-header>
+<custom-masonry *ngIf="universities"></custom-masonry>
+<!--<custom-jquery *ngIf="firstTime"></custom-jquery>-->
+<div *ngIf="university">
+	<!-- Main -->
+	<main class="main-content">
+	<!-- Aside Trigger -->
+		<a routerLink="/dashboard" routerLinkActive="active" class="aside-trigger" asideTrigger>
+			<img src="assets/img/icons/right-arrow.svg" alt="">
+		</a>
+	<!-- Aside -->
+	<aside class="left-aside structure-aside">
+		<div class="aside-content" *ngIf="universities">
+			<university-aside *ngIf="currentModuleId"
+			[university]='university' 
+			[currentState]='currentState' 
+			[currentModuleId]="currentModuleId"
+			[currentLang]="currentLang"
+			(subModulesList)="setSubModules($event)"
+			(select)="filterUniversitiesBy($event)"></university-aside> 
+		</div>
+	</aside>
+	<!-- End Aside -->
+
+	<!-- Main Container -->
+	<div class="ov-hid">
+		<div class="main-container st-block-style vert-scroll">
+			<lessons-list 
+			[loading]="loading"
+			[currentLang]="currentLang"
+			[lessons]='lessons'
+			(loadMore)='loadMoreLessons()'
+			></lessons-list>
+		</div>
+	</div>
+	<!-- End Main Container -->
+
+	</main>
+	<!-- End Main -->
+</div>

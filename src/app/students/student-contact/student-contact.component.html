@@ -1,0 +1,36 @@
+<div class="blocks-grid">	
+	<div class="grid-item">
+		<div class="adress-info-left">
+			<ul>
+				<li class="info-head">Unvan</li>
+				<hr class="har">
+				<li class="info-head" *ngFor="let address of student.addresses">{{address.name | translate: currentLang }} <p>{{address.value | translate: currentLang }}</p>
+				<hr class="har">
+				</li>
+
+			</ul>
+		</div>
+	</div>
+<!-- part of contacts
+	<div class="grid-item">
+		<div class="mob-info">
+			<ul>
+				<li class="info-head">Ev ve mobil telefonleri</li>
+				<div *ngFor="let number of student.phoneNumbers">
+					<hr class="har">
+					<li>{{number}}</li>
+				</div>
+			</ul>
+		</div>
+	</div>
+-->
+	<div class="grid-item">
+		<div class="adress-info-right">
+			<ul>
+				<li class="info-head">Elaqe</li>
+				<hr class="har">
+				<li class="info-head" *ngFor="let contact of student.contacts">{{contact.name | translate: currentLang }} <p>{{contact.address | translate: currentLang }}</p><hr class="har"></li>
+			</ul>
+		</div>
+	</div>
+</div>
