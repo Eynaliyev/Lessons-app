@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import '../rxjs-extensions';
 
-import { Lesson } from './lesson.model';
+import { Lesson, Language, Employee, Topic, Participant } from './lesson.model';
 import { UserService } from './user.service';
 
 @Injectable()
@@ -91,7 +91,7 @@ export class LessonService {
 			.toPromise()
 			.then(response => {
 				console.log('response.json().data for journal by Lesson id', response.json().data);
-				return response.json().data;
+				return this.mapTopics(response);
 			})
             .catch(this.handleError);
 		});
@@ -146,6 +146,15 @@ export class LessonService {
 		   return response.json().data.map(participant => this.toParticipant(participant));
 	   }
 	}
+	mapTopics(response){
+		//console.log('data in mapParitcipants: ', data);
+	   // The response of the API hwith the results
+	   if(response.json().data.lenght === 0) {
+			return [];
+	   } else {
+		   return response.json().data.map(topic => this.toTopic(topic));
+	   }
+	}
 	// the mapping function used in the dashboard because there's less information and inconsistent variable names
 	toLesson(r:any, token): Lesson{
 		//iterate thorugh the properties of the object
@@ -162,7 +171,7 @@ export class LessonService {
 		//console.log('lesson in toLesson: ', lesson);
 		return lesson;
 	}
-	toLanguage(language){
+	toLanguage(language): Language{
 		//console.log('language in toLanguage: ', language);
 		let res = {
 			name: language.languageName.value
@@ -170,19 +179,30 @@ export class LessonService {
 		return res;
 
 	}
-	toEmployee(employee){
+	toEmployee(employee): Employee{
 		//console.log('employee in employee: ', language);
 		let res = {
 			name: employee.name
 		};
 		return res;
 	}
-	toParticipant(participant){
+	toTopic(topic): Topic{
+		let obj = this.setDefaults(topic);
 		let res = {
-			name: participant.studentName,
-			status: participant.status,
-			specialty: participant.orgName,
-			group: participant.groupName
+		    name: obj.topicName,
+		    date: obj.schemaDate,
+		    time: obj.schemaTime,
+		    about: obj.schemaAbout
+		};
+		return res;
+	}
+	toParticipant(participant): Participant{
+		let obj = this.setDefaults(participant);
+		let res = {
+			name: obj.studentName,
+			status: obj.status,
+			specialty: obj.orgName,
+			group: obj.groupName
 		};
 		return res;
 	}
@@ -210,7 +230,7 @@ export class LessonService {
 		//console.log('setting defaults in: ', obj)
 		//array of properties  in Lessons that require 
 		//for now, no properties that need their data set
-		let simpleProperties = [];
+		let simpleProperties = ['about', 'name'];
 		//let simpleProperties = ["name", "about", "address"]
 		// let's only check for properties that we care about
 		for (var i = 0; i < simpleProperties.length; i++){

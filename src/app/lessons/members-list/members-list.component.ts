@@ -12,4 +12,13 @@ export class MembersListComponent {
 	ngOnInit(){
 		//console.log('students in members-list', this.students);
 	}
+	add(){
+
+	}
+	edit(){
+
+	}
+	delete(){
+		
+	}
 }

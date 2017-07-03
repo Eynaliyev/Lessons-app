@@ -4,6 +4,18 @@ export interface Employee{
 export interface Language{
 	name: string
 }
+export interface Topic{
+    name: string,
+    date: string,
+    time: string,
+    about: string
+}
+export interface Participant{
+    name: string,
+    status: string,
+    specialty: string,
+    group: string
+}
 
 export class Lesson {
   constructor(

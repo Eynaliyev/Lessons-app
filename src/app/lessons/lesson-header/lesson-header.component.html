@@ -4,7 +4,7 @@
 			<li><a class="nav-btn accent-nav-btn" href="lesson-about.php" (click)="navSelect('lesson-about'); false" [class.active-btn]="currentState == 'lesson-about'">ESAS</a></li>
 			<li><a class="nav-btn accent-nav-btn" href="/members.php" (click)="navSelect('members-list'); false" [class.active-btn]="currentState == 'members-list'">ISTIRAKCILAR</a></li>
 			<li><a class="nav-btn accent-nav-btn" href="/meetings.php" (click)="navSelect('meeting'); false" [class.active-btn]="currentState == 'meeting' || currentState == 'meeting-files'">GORUSHLER</a></li>
-			<li><a class="nav-btn accent-nav-btn" href="/e-journal.php" (click)="navSelect('e-journal'); false" [class.active-btn]="currentState == 'e-journal'">e-JURNAL</a></li>
+			<li><a class="nav-btn accent-nav-btn" href="/e-journal.php" (click)="navSelect('e-journal'); false" [class.active-btn]="currentState == 'e-journal' || currentState == 'final-journal' || currentState == 'activity' || currentState == 'independent-work' || currentState == 'course-work' || currentState == 'final-journal'">e-JURNAL</a></li>
 		</ul>
 	</div>
 	<img src="assets/img/icons/subject.svg" alt="" class="lesson-img">
@@ -24,24 +24,24 @@
 		</div>
 	</div>
 	<!-- only in the e-journal page -->
-	<div class="profile-main-nav" *ngIf="currentState == 'e-journal' || currentState == 'final-journal'">
-		<a href="e-journal" class="nav-btn active-btn">Aktivlik</a>
-		<a href="e-journal" class="nav-btn">Sərbəst iş</a>
-		<a href="e-journal" class="nav-btn">Kurs işi</a>
-		<a href="final-journal" class="nav-btn">Yekun jurnal</a>
+	<div class="profile-main-nav" *ngIf="currentState == 'e-journal' || currentState == 'final-journal' || currentState == 'activity' || currentState == 'independent-work' || currentState == 'course-work' || currentState == 'final-journal'">
+		<a href="e-journal" class="nav-btn active-btn" (click)="navSelect('activity'); false" [class.active-btn]="currentState == 'activity'">Aktivlik</a>
+		<a href="e-journal" class="nav-btn" (click)="navSelect('independent-work'); false" [class.active-btn]="currentState == 'independent-work'">Sərbəst iş</a>
+		<a href="e-journal" class="nav-btn" (click)="navSelect('course-work'); false" [class.active-btn]="currentState == 'course-work'">Kurs işi</a>
+		<a href="final-journal" class="nav-btn" (click)="navSelect('final-journal'); false" [class.active-btn]="currentState == 'final-journal'">Yekun jurnal</a>
 
-		<a href="journal-add" class="add-journal">
+		<a href="journal-add" class="add-journal" (click)="navSelect('add-journal')">
 			<img src="assets/img/icons/add-blue.svg" alt="">
 		</a>
 	</div>
 
 	<!-- only in the meetings page -->
-	<div class="profile-main-nav" *ngIf="currentState == 'meeting'  ||currentState == 'meeting-files'">
+	<div class="profile-main-nav" *ngIf="currentState == 'meeting'  || currentState == 'meeting-files'">
 		<a href="meetings.php" class="nav-btn active-btn" (click)="navSelect('meeting'); false" [class.active-btn]="currentState == 'meetings'">Movzular</a>
 		<a href="meetings-files.php" class="nav-btn" (click)="navSelect('meeting-files'); false" [class.active-btn]="currentState == 'meeting-files'">Materiallar</a>
 
 		<div class="more-icon-x">
-			<a href="#" class="more-icon icon-btn open-popup" data-popup="more-icon-x-popup">
+			<a href="#" class="more-icon icon-btn open-popup" data-popup="more-icon-x-popup" popUp>
 				<img src="assets/img/icons/more-x.svg" alt="">
 			</a>
 			<!-- more-icon popup -->

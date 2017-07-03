@@ -547,7 +547,7 @@ header:after { content: ""; display: table; clear: both; }
 .main-content-second:before { content: ""; width: 100%; height: 60px; background-color: #2ebaee; position: absolute; top: 0; left: 0; display: block; z-index: 2; }
 .main-content-second .main-container-second { position: relative; z-index: 10; padding: 0 15px; }
 
-.lesson-top { background: url("/images/e-journal-top-img.jpg"); background-size: cover; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); background-position: 50% 50%; text-align: center; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; border-radius: 4px; }
+.lesson-top { background: url("/assets/images/e-journal-top-img.jpg"); background-size: cover; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); background-position: 50% 50%; text-align: center; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; border-radius: 4px; }
 .lesson-top .lesson-main-nav { margin-top: 30px; display: inline-block; }
 .lesson-top .lesson-main-nav li { float: left; margin: 0 5px; }
 .lesson-top .lesson-main-nav li .nav-btn { color: #fff; }

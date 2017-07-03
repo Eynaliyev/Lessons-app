@@ -8,8 +8,10 @@ import { Pipe } from '@angular/core';
  
 export class FirstLettersPipe{
 	transform(value){
+		console.log('value in first letters: ', value);
 		let res: string  = "";
 		res = value.split(" ").map(item => {return item[0]}).join('');
+		console.log('value in res letters: ', res);
 		return res;
 	}
 }

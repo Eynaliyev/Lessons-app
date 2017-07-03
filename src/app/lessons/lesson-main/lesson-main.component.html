@@ -12,10 +12,10 @@
 		*ngIf="currentState == 'final-journal'"
 		[lesson] = 'lesson'
 		[currentLang]="currentLang"></final-journal>
-		<final-journal 
+		<e-journal 
 		*ngIf="currentState == 'e-journal'"
 		[lesson] = 'lesson'
-		[currentLang]="currentLang"></final-journal>
+		[currentLang]="currentLang"></e-journal>
 	</div>
 
 	<journal-edit *ngIf="currentState == 'journal-edit'" 
@@ -30,6 +30,7 @@
 	></lesson-about>
 	<meeting *ngIf="currentState == 'meeting'" 
 	[lesson] = 'lesson'
+	[topics]="topics"
 	[currentLang]="currentLang"
 	></meeting>
 	<meeting-files *ngIf="currentState == 'meeting-files'" 

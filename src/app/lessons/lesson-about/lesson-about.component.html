@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="main-text-bottom st-block-style">
 		<ul class="info-coint-ul">
-			<li class="lessons-main-head"><h3>Km</h3></li>
+			<li class="lessons-main-head"><h3>F</h3></li>
 			<li class="info-head">{{lesson.name | translate: currentLang }}</li>
 			<li>{{lesson.info | translate: currentLang }}</li>
 		</ul>
@@ -12,12 +12,9 @@
 			<li class="lesson-main-icon">
 				<img src="assets/img/desk.svg" alt="">
 			</li>
-			<li class="info-head">
+			<li>
 				<p>Telimci</p>
 				<p *ngFor="let employee of lesson.employees">{{employee.name | translate: currentLang }}</p>
-			</li>
-			<li class="lesson-profile-img">
-				<img src="assets/img/user.png" alt="" default="assets/images/user.png">
 			</li>
 		</ul>
 	</div>
@@ -27,7 +24,7 @@
 			<li class="lesson-main-icon">
 				<img src="assets/img/desk.svg" alt="">
 			</li>
-			<li class="info-head">
+			<li>
 				<p>Telim dili</p>
 				<p *ngFor="let language of lesson.languages">{{language.name | translate: currentLang }}</p>
 			</li>
