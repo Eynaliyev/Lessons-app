@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 }) 
 export class EJournalComponent {
 	@Input() lesson;
+	@Input() currentLang;
+
 }

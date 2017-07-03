@@ -30,8 +30,8 @@ export class UserService {
         localStorage.setItem('currentUser', JSON.stringify({ 
             token: token,
         }));
-        console.log('old token:', JSON.parse(localStorage.getItem('currentUser')).token);
-        console.log('new tokenL ', token);
+        // console.log('old token:', JSON.parse(localStorage.getItem('currentUser')).token);
+        // console.log('new tokenL ', token);
         this.getCurrentUser().then(user => {
             this.router.navigate([url]);
         });
@@ -42,34 +42,34 @@ export class UserService {
     }
     setCurrentLanguage(lang): void{
         this.currentLanguage.next(lang);     
-        console.log('set the currentLanguage to: ', this.currentLanguage);     
+        //console.log('set the currentLanguage to: ', this.currentLanguage);     
     }
     getLanguages(): Promise<any>{
         let languages = ["az", "en", "ru"];    
         let res = new Promise<any>((resolve, reject) => {
-            console.log('languages in getLanguages: ', languages);
+            //console.log('languages in getLanguages: ', languages);
             resolve(languages);
         });
-        console.log('res responses is: ', res);
+        //console.log('res responses is: ', res);
         return res;
     }
     getToken(): Promise<any>{
         let res = new Promise<any>((resolve, reject) => {
-            console.log('token in getToken: ', JSON.parse(localStorage.getItem('currentUser')));
+            //console.log('token in getToken: ', JSON.parse(localStorage.getItem('currentUser')));
             resolve(JSON.parse(localStorage.getItem('currentUser')).token);
         });
-        console.log('res responses is: ', res);
+        //console.log('res responses is: ', res);
         return res;
     }
     //get applications list to be shown in the header
     getApplications(): Promise<any>{
         return this.getToken().then(token =>{
             this.applicationsUrl = `http://192.168.1.78:8082/ROS/applications?token=${token}`;
-            console.log('applicationsUrl: ', this.applicationsUrl);        
+            //console.log('applicationsUrl: ', this.applicationsUrl);        
             return this.http.get(this.applicationsUrl)
             .toPromise()
             .then(response => {
-                console.log('response.json().data for getting applications', response.json().data);
+                //console.log('response.json().data for getting applications', response.json().data);
                 return this.mapApplications(response, token);
             })
             .catch(this.handleError);
@@ -90,7 +90,7 @@ export class UserService {
     getModules(): Promise<any>{
         return this.getToken().then(token =>{
             this.modulesUrl = `http://192.168.1.78:8082/ROS/applications/1000003/modules?token=${token}`;
-            console.log('modulesUrl: ', this.modulesUrl);        
+            //console.log('modulesUrl: ', this.modulesUrl);        
             return this.http.get(this.modulesUrl)
             .toPromise();
             /* - I have no idea why it's not working - as soon as I use return, it empties the array
@@ -102,7 +102,7 @@ export class UserService {
     }
     mapModules(response, token): Array<any>{
        // console.log('response.json().data: ',response.json().data);
-       console.log('mapModules response: ', response.json().data);
+       //console.log('mapModules response: ', response.json().data);
        return response.json().data.map(mod => this.toModule(mod));
     }
     toModule(r:any): any{

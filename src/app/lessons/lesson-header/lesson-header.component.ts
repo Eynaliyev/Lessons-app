@@ -7,10 +7,9 @@ import { Component, Input, Output, EventEmitter  } from '@angular/core';
 }) 
 export class LessonHeaderComponent {
 	@Input () currentState: string;
-
 	@Input() lesson;
-
 	@Input () states;
+	@Input() currentLang;
 
 	@Output() 
 	select = new EventEmitter();

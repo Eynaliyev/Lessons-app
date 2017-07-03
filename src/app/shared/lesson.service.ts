@@ -46,7 +46,7 @@ export class LessonService {
 	}
 	getLessonById(id): Promise<any> {
 		return this.userService.getToken().then(token =>{
-			this.realLessonByIdUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectTopic?token=${token}&subjectId=${id}`;		
+			this.realLessonByIdUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectInfo?token=${token}&subjectId=${id}`;		
 			console.log('realLessonByIdURL', this.realLessonByIdUrl);
 			return this.http.get(this.realLessonByIdUrl)
 			.toPromise()
@@ -57,20 +57,101 @@ export class LessonService {
             .catch(this.handleError);
 		});
 	}
+	getStudentsByLesson(id){
+		return this.userService.getToken().then(token =>{
+			let studentsByLessonUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/studentBySubject?token=${token}&subjectId=${id}`;
+			console.log('studentsByLessonUrl', studentsByLessonUrl);
+			return this.http.get(studentsByLessonUrl)
+			.toPromise()
+			.then(response => {
+				console.log('response.json().data for students by Lesson id', response.json().data);
+				return this.mapParticipants(response);
+			})
+            .catch(this.handleError);
+		});
+	}
+	getTeachersByLesson(id){
+		return this.userService.getToken().then(token =>{
+			let teachersByLessonUrl = `192.168.1.78:8082/UnibookHsisInfoRest/education/employeeBySubject?token=${token}&subjectId=${id}`;
+			console.log('teachersByLessonUrl', teachersByLessonUrl);
+			return this.http.get(teachersByLessonUrl)
+			.toPromise()
+			.then(response => {
+				console.log('response.json().data for teachers by Lesson id', response.json().data);
+				return response.json().data;
+			})
+            .catch(this.handleError);
+		});
+	}
+	getTopics(id){
+		return this.userService.getToken().then(token =>{
+			let topicsUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectTopic?token=${token}&subjectId=${id}`;
+			console.log('studentsByLessonUrl', topicsUrl);
+			return this.http.get(topicsUrl)
+			.toPromise()
+			.then(response => {
+				console.log('response.json().data for journal by Lesson id', response.json().data);
+				return response.json().data;
+			})
+            .catch(this.handleError);
+		});
+	}
+	getJournal(id){
+		return this.userService.getToken().then(token =>{
+			let journalUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/journal?token=${token}&subjectId=${id}&pageNum=1`;
+			console.log('studentsByLessonUrl', journalUrl);
+			return this.http.get(journalUrl)
+			.toPromise()
+			.then(response => {
+				console.log('response.json().data for journal by Lesson id', response.json().data);
+				return response.json().data;
+			})
+            .catch(this.handleError);
+		});
+	}
 	mapLessons(response:Response, token: string): Lesson[]{
+		//console.log('data in mapLessons: ', data);
+		// The response of the API hwith the results
+		if(response.json().data.lenght === 0) {
+			return [];
+		} else {
+		   return response.json().data.map(lesson => this.toLesson(lesson, token));
+		}
+	}
+	// I'm passing in data in json 
+	mapLanguages(data){
+		//console.log('data in mapLanguages: ', data);
+		// The response of the API hwith the results
+		if(data.lenght === 0) {
+			return [];
+		} else {
+		   return data.map(language => this.toLanguage(language));
+		}
+	}
+	mapEmployees(data){
+		//console.log('data in mapEmployees: ', data);
+	   // The response of the API hwith the results
+	   if(data.lenght === 0) {
+			return [];
+	   } else {
+		   return data.map(employee => this.toEmployee(employee));
+	   }
+	}
+	mapParticipants(response){
+		//console.log('data in mapParitcipants: ', data);
 	   // The response of the API hwith the results
 	   if(response.json().data.lenght === 0) {
 			return [];
 	   } else {
-		   return response.json().data.map(lesson => this.toLesson(lesson, token));
+		   return response.json().data.map(participant => this.toParticipant(participant));
 	   }
 	}
 	// the mapping function used in the dashboard because there's less information and inconsistent variable names
-	toLesson(r:any, token: any): Lesson{
+	toLesson(r:any, token): Lesson{
 		//iterate thorugh the properties of the object
 		//if null, add empty to the property including the .value or whatever
 		let obj = this.setDefaults(r);
-		let uni = <Lesson>({
+		let lesson = <Lesson>({
 			id: obj.id,
 			name: obj.subject.value,
 			studentCount: obj.studentCount,
@@ -78,35 +159,50 @@ export class LessonService {
 			year: obj.eduYear.value,
 			semester: obj.semester.value
 		});
-		return uni;
+		//console.log('lesson in toLesson: ', lesson);
+		return lesson;
+	}
+	toLanguage(language){
+		//console.log('language in toLanguage: ', language);
+		let res = {
+			name: language.languageName.value
+		};
+		return res;
+
+	}
+	toEmployee(employee){
+		//console.log('employee in employee: ', language);
+		let res = {
+			name: employee.name
+		};
+		return res;
+	}
+	toParticipant(participant){
+		let res = {
+			name: participant.studentName,
+			status: participant.status,
+			specialty: participant.orgName,
+			group: participant.groupName
+		};
+		return res;
 	}
 	//to Uni mapping function that's used in the detail view
-	toLessonDetail(r:any, token: any): Lesson{
+	toLessonDetail(r:any, token: any){
 		//iterate thorugh the properties of the object
 		//if null, add empty to the property including the .value or whatever
-		let obj = this.setDefaults(r);
-		/* we'll use empty one before we map it further*/
-		let uni;
-		/*
-		let uni = <Lesson>({
-			id: obj.id,
-			name: obj.name,
-			info: obj.about,
-			studentCount: obj.studentCount,
-			teacherCount: obj.employeeCount,
-			street: obj.address,
-			imgUrl: `http://192.168.1.78:8082/UnibookHsisRest/structures/${obj.id}/logo?token=${token}`,
-			coverImgUrl: `http://192.168.1.78:8082/UnibookHsisRest/structures/${obj.id}/cover?token=${token}`,	
-			rektorName: obj.rectorName,
-			buildingCount: obj.structureInfo.buildingCount,
-			commonArea: obj.structureInfo.commonArea,
-			eduLabArea: obj.structureInfo.eduLabArea,
-			sportArea: obj.structureInfo.sportArea,
-			campusArea: obj.structureInfo.campusArea,
-			pcCount: obj.structureInfo.pcCount,
-			departmentCount: obj.fakulteCount
-		});*/
-		return uni;
+		//console.log("response in toLessonDetail: ", r);
+		let languages = this.mapLanguages(r.language);
+		let employees = this.mapEmployees(r.employee);
+		let lesson = {
+			name: r.subjectName,
+			info: r.info,
+			languages: languages,
+			nextMeeting: r.nextMeeting,
+			nextTopicName: r.nextTopicName,
+			employees: employees
+		};
+		//console.log('lesson in toLessonDetail: ', lesson);
+		return lesson;
 	}
 	// setting default values to object properties in case 
 	// might have to convert into a promise

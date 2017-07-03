@@ -4,24 +4,43 @@
 	<div class="container-fluid main-container-second">
 		<lesson-header 
 		[currentState] = 'currentState'
+		[lesson] = 'lesson'
+		[currentLang]="currentLang"
 		[states]='states'
 		(select)="setCurrentState($event)"></lesson-header>
-
 		<final-journal 
 		*ngIf="currentState == 'final-journal'"
-		[lesson] = 'lesson'></final-journal>
-
+		[lesson] = 'lesson'
+		[currentLang]="currentLang"></final-journal>
 		<final-journal 
 		*ngIf="currentState == 'e-journal'"
-		[lesson] = 'lesson'></final-journal>
-
+		[lesson] = 'lesson'
+		[currentLang]="currentLang"></final-journal>
 	</div>
 
-	<journal-edit *ngIf="currentState == 'journal-edit'" [lesson] = 'lesson'></journal-edit>
-	<lesson-about *ngIf="currentState == 'lesson-about'" [lesson] = 'lesson'></lesson-about>
-	<meeting *ngIf="currentState == 'meeting'" [lesson] = 'lesson'></meeting>
-	<meeting-files *ngIf="currentState == 'meeting-files'" [lesson] = 'lesson'></meeting-files>
-	<members-list *ngIf="currentState == 'members-list'" [lesson] = 'lesson'></members-list>
+	<journal-edit *ngIf="currentState == 'journal-edit'" 
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"
+	[journal]="journal
+	"></journal-edit>
+	<lesson-about  *ngIf="currentState == 'lesson-about'" 
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"
+	(select)="setCurrentState($event)"
+	></lesson-about>
+	<meeting *ngIf="currentState == 'meeting'" 
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"
+	></meeting>
+	<meeting-files *ngIf="currentState == 'meeting-files'" 
+	[currentLang]="currentLang"
+	[lesson] = 'lesson'
+	[topics]="topics
+	"></meeting-files>
+	<members-list *ngIf="currentState == 'members-list'" 
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"
+	[students]="students"></members-list>
 
 </main>
 

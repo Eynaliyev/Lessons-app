@@ -7,5 +7,7 @@ import { Component, Input } from '@angular/core';
 }) 
 export class MeetingsListComponent {
 	@Input() lesson;
+	@Input() students;
+	@Input() currentLang;
 
 }

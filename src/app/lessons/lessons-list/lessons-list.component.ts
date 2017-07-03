@@ -47,6 +47,7 @@ export class LessonsListComponent implements OnInit {
 		});
 	}
 	goInfo(lesson: Lesson){
+		console.log(lesson);
 		this.gotoInfo.emit(lesson);
 	}
 }

@@ -10,15 +10,10 @@
 		</a>
 	<!-- Aside -->
 	<aside class="left-aside structure-aside">
-		<div class="aside-content" *ngIf="universities">
-			<university-aside *ngIf="currentModuleId"
+		<div class="aside-content" *ngIf="university">
+			<university-aside 
 			[university]='university' 
-			[currentState]='currentState' 
-			[currentModuleId]="currentModuleId"
-			[currentLang]="currentLang"
-
-			(subModulesList)="setSubModules($event)"
-			(select)="filterUniversitiesBy($event)"></university-aside> 
+			[currentLang]="currentLang"></university-aside> 
 		</div>
 	</aside>
 	<!-- End Aside -->

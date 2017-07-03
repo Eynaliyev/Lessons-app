@@ -79,6 +79,7 @@ export class DashboardComponent implements OnInit {
 		}
 	}
 	gotoInfo(lesson: Lesson): void { 
+		console.log(lesson);
 		let link = ['/lesson', lesson.id];
 		this.router.navigate(link);
 	}

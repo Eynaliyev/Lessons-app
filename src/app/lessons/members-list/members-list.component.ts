@@ -7,5 +7,9 @@ import { Component, Input } from '@angular/core';
 }) 
 export class MembersListComponent {
 	@Input() lesson;
-
+	@Input() students;
+	@Input() currentLang;
+	ngOnInit(){
+		//console.log('students in members-list', this.students);
+	}
 }

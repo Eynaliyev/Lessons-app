@@ -12,7 +12,6 @@ export class UniversityAsideComponent implements OnInit, OnChanges {
 	constructor(public userService: UserService) {}
 
 	@Input() university: University;
-	@Input() universities: University[];
 	@Input() currentState: string;
 	@Input() currentModuleId: string;
 	@Input() currentLang;
@@ -34,6 +33,7 @@ export class UniversityAsideComponent implements OnInit, OnChanges {
 	filters: Array<any>;
 
 	ngOnInit() {
+		console.log('university in aside component: ', this.university);
 		let maleChecked = true;
 		let femaleChecked = true;
 		this.userService.getModules().then(mods => {

@@ -3,13 +3,13 @@
 		<ul class="lesson-main-nav">
 			<li><a class="nav-btn accent-nav-btn" href="lesson-about.php" (click)="navSelect('lesson-about'); false" [class.active-btn]="currentState == 'lesson-about'">ESAS</a></li>
 			<li><a class="nav-btn accent-nav-btn" href="/members.php" (click)="navSelect('members-list'); false" [class.active-btn]="currentState == 'members-list'">ISTIRAKCILAR</a></li>
-			<li><a class="nav-btn accent-nav-btn" href="/meetings.php" (click)="navSelect('meeting'); false" [class.active-btn]="currentState == 'meeting'">GORUSHLER</a></li>
+			<li><a class="nav-btn accent-nav-btn" href="/meetings.php" (click)="navSelect('meeting'); false" [class.active-btn]="currentState == 'meeting' || currentState == 'meeting-files'">GORUSHLER</a></li>
 			<li><a class="nav-btn accent-nav-btn" href="/e-journal.php" (click)="navSelect('e-journal'); false" [class.active-btn]="currentState == 'e-journal'">e-JURNAL</a></li>
 		</ul>
 	</div>
 	<img src="assets/img/icons/subject.svg" alt="" class="lesson-img">
 	<div class="main-text">
-		<h4>Kompyuter muhendesliyi</h4>
+		<h4>{{lesson.name  | translate: currentLang }}</h4>
 	</div>
 
 	<!-- only in the journal add -->
@@ -25,12 +25,12 @@
 	</div>
 	<!-- only in the e-journal page -->
 	<div class="profile-main-nav" *ngIf="currentState == 'e-journal' || currentState == 'final-journal'">
-		<a href="e-journal.php" class="nav-btn active-btn">Aktivlik</a>
-		<a href="e-journal.php" class="nav-btn">Sərbəst iş</a>
-		<a href="e-journal.php" class="nav-btn">Kurs işi</a>
-		<a href="final-journal.php" class="nav-btn">Yekun jurnal</a>
+		<a href="e-journal" class="nav-btn active-btn">Aktivlik</a>
+		<a href="e-journal" class="nav-btn">Sərbəst iş</a>
+		<a href="e-journal" class="nav-btn">Kurs işi</a>
+		<a href="final-journal" class="nav-btn">Yekun jurnal</a>
 
-		<a href="journal-add.php" class="add-journal">
+		<a href="journal-add" class="add-journal">
 			<img src="assets/img/icons/add-blue.svg" alt="">
 		</a>
 	</div>

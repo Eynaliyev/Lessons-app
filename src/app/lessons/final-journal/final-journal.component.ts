@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 }) 
 export class FinalJournalComponent {
 	@Input() lesson;
-
+	@Input() currentLang;
 }

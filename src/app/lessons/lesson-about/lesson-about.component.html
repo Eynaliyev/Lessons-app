@@ -2,23 +2,22 @@
 	<div class="main-text-bottom st-block-style">
 		<ul class="info-coint-ul">
 			<li class="lessons-main-head"><h3>Km</h3></li>
-			<li class="info-head">Fenn haqqinda melumat</li>
-			<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum corporis minima facilis accusamus! Repellendus debitis aliquam quod distinctio itaque omnis error facilis, quis eaque tenetur. Quas provident tempore sapiente recusandae.</li>
-			<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio obcaecati, consectetur dolor quidem vel, placeat recusandae praesentium dolores ea ipsum voluptatem facere ad odio nesciunt quisquam sint quasi. Tenetur, iste!</li>
+			<li class="info-head">{{lesson.name | translate: currentLang }}</li>
+			<li>{{lesson.info | translate: currentLang }}</li>
 		</ul>
 	</div>
 
 	<div class="lessons-info-table st-block-style">
 		<ul>
 			<li class="lesson-main-icon">
-				<img src="img/desk.svg" alt="">
+				<img src="assets/img/desk.svg" alt="">
 			</li>
 			<li class="info-head">
 				<p>Telimci</p>
-				<p>Soyadi adi atasinin adi</p>
+				<p *ngFor="let employee of lesson.employees">{{employee.name | translate: currentLang }}</p>
 			</li>
 			<li class="lesson-profile-img">
-				<img src="img/user1.png" alt="">
+				<img src="assets/img/user.png" alt="" default="assets/images/user.png">
 			</li>
 		</ul>
 	</div>
@@ -26,11 +25,11 @@
 	<div class="lessons-info-table st-block-style">
 		<ul>
 			<li class="lesson-main-icon">
-				<img src="img/desk.svg" alt="">
+				<img src="assets/img/desk.svg" alt="">
 			</li>
 			<li class="info-head">
 				<p>Telim dili</p>
-				<p>Azerbaycan,ingilis</p>
+				<p *ngFor="let language of lesson.languages">{{language.name | translate: currentLang }}</p>
 			</li>
 		</ul>
 	</div>
@@ -38,17 +37,17 @@
 	<div class="lessons-info-table st-block-style">
 		<ul>
 			<li class="lesson-main-icon">
-				<img src="img/meeting.svg" alt="">
+				<img src="assets/img/meeting.svg" alt="">
 			</li>
 			<li class="info-head">
 				<p>Novbeti gorush</p>
-				<p>21 aprel 2016</p>
+				<p>{{lesson.nextMeeting | translate: currentLang }}</p>
 			</li>
 			<li class="info-head">
 				<p>Movzunun ad</p>
-				<p>JS functions and closures</p>
+				<p>{{lesson.nextTopicName | translate: currentLang }}</p>
 			</li>
-			<li class="see-all-meetings"><a href="#" class="rounded-btn">butun gourshlere bax</a></li>
+			<li class="see-all-meetings"><a href="#" class="rounded-btn" (click)="navSelect('meeting'); false">butun gourshlere bax</a></li>
 		</ul>
 	</div>
 </div>

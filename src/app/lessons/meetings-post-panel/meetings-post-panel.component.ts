@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
 }) 
 export class MeetingsPostPanelComponent {
 	@Input() lesson;
+	@Input() currentLang;
 
 }
