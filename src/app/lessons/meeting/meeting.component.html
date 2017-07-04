@@ -1,8 +1,13 @@
 <div class="container meetings-container">
 <!-- meetings add -->
-	<meetings-post-panel></meetings-post-panel>
+	<meetings-post-panel *ngIf="currentState == 'meeting'" ></meetings-post-panel>
 
 	<!-- meetings blocks -->
-	<meetings-list 
+	<meetings-list  *ngIf="currentState == 'meeting'" 
 	[topics]="topics"></meetings-list>
+	<meeting-files *ngIf="currentState == 'meeting-files'" 
+	[currentLang]="currentLang"
+	[lesson] = 'lesson'
+	[topics]="topics
+	"></meeting-files>
 </div>

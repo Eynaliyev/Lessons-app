@@ -8,40 +8,28 @@
 		[currentLang]="currentLang"
 		[states]='states'
 		(select)="setCurrentState($event)"></lesson-header>
-		<final-journal 
-		*ngIf="currentState == 'final-journal'"
-		[lesson] = 'lesson'
-		[currentLang]="currentLang"></final-journal>
-		<e-journal 
-		*ngIf="currentState == 'e-journal'"
-		[lesson] = 'lesson'
-		[currentLang]="currentLang"></e-journal>
 	</div>
 
-	<journal-edit *ngIf="currentState == 'journal-edit'" 
-	[lesson] = 'lesson'
-	[currentLang]="currentLang"
-	[journal]="journal
-	"></journal-edit>
+
 	<lesson-about  *ngIf="currentState == 'lesson-about'" 
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
 	(select)="setCurrentState($event)"
 	></lesson-about>
-	<meeting *ngIf="currentState == 'meeting'" 
-	[lesson] = 'lesson'
-	[topics]="topics"
-	[currentLang]="currentLang"
-	></meeting>
-	<meeting-files *ngIf="currentState == 'meeting-files'" 
-	[currentLang]="currentLang"
-	[lesson] = 'lesson'
-	[topics]="topics
-	"></meeting-files>
 	<members-list *ngIf="currentState == 'members-list'" 
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
 	[students]="students"></members-list>
-
+	<meeting *ngIf="currentState == 'meeting' || currentState == 'meeting-files'" 
+	[lesson] = 'lesson'
+	[topics]="topics"
+	[currentLang]="currentLang"
+	[currentState]="currentState"
+	></meeting>
+	<e-journal 
+	*ngIf="currentState == 'journal-tab' || currentState == 'activity' || currentState == 'independent-work' || currentState == 'course-work' || currentState == 'final-journal'"
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"
+	[currentState]="currentState"></e-journal>
 </main>
 

@@ -2,10 +2,10 @@ import { Component, Input, Output, EventEmitter  } from '@angular/core';
 
 @Component({
 	
-	selector: 'lesson-header',
-	templateUrl: 'lesson-header.component.html'
+	selector: 'lesson-sub-header',
+	templateUrl: 'lesson-sub-header.component.html'
 }) 
-export class LessonHeaderComponent {
+export class LessonSubHeaderComponent {
 	@Input () currentState: string;
 	@Input() lesson;
 	@Input () states;
@@ -18,7 +18,7 @@ export class LessonHeaderComponent {
 	// it gets called from nav buttons that control the in-page navigation
 	navSelect(value){
 		this.currentState = value;
-		console.log('currentState in header: ', this.currentState);
+		console.log('currentState in subheader: ', this.currentState);
 		this.select.emit(value);
 	}
 }

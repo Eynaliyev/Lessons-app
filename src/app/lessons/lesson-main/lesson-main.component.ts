@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Lesson } from '../../shared/lesson.model';
 import { LessonService } from '../../shared/lesson.service';
@@ -62,6 +62,7 @@ export class LessonMainComponent implements OnInit {
 	}
 	setCurrentState (event) {
 		this.currentState = event;
+		console.log('current state: ', this.currentState);
 	}
 
 }

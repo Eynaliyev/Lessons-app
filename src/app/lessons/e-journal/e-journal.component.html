@@ -1,3 +1,12 @@
+<final-journal 
+	*ngIf="currentState == 'final-journal'"
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"></final-journal>
+<journal-edit *ngIf="currentState == 'journal-edit'" 
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"
+	[journal]="journal"
+	></journal-edit>
 <div class="journal-table st-block-style">
 	<table class="st-table">
 		<tr>

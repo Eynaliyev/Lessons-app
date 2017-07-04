@@ -101,7 +101,7 @@ import { UserMainInfoComponent } from './user/user-main-info/user-main-info.comp
 import { UserContactComponent } from './user/user-contact/user-contact.component';
 import { UserDocsComponent } from './user/user-docs/user-docs.component';
 import { UserHeaderComponent } from './user/user-header/user-header.component';
-import {DefaultImage} from './shared/default-image.directive';
+import { DefaultImage } from './shared/default-image.directive';
 import { NavButtonDirective } from './shared/nav-button.directive';
 import { PopupDirective } from './shared/popup.directive';
 import { AsideTriggerDirective } from './shared/aside-trigger.directive';
