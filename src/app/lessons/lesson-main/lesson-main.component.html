@@ -6,16 +6,16 @@
 		[currentState] = 'currentState'
 		[lesson] = 'lesson'
 		[currentLang]="currentLang"
+		[subState]="subState"
 		[states]='states'
-		(select)="setCurrentState($event)"></lesson-header>
+		(select)="setCurrentState($event)"
+		(updateSubState)="setSubState($event)"></lesson-header>
 	</div>
-
 
 	<lesson-about  *ngIf="currentState == 'lesson-about'" 
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
-	(select)="setCurrentState($event)"
-	></lesson-about>
+	(select)="setCurrentState($event)"></lesson-about>
 	<members-list *ngIf="currentState == 'members-list'" 
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
@@ -25,11 +25,12 @@
 	[topics]="topics"
 	[currentLang]="currentLang"
 	[currentState]="currentState"
-	></meeting>
+	[subState]="subState"></meeting>
 	<e-journal 
-	*ngIf="currentState == 'journal-tab' || currentState == 'activity' || currentState == 'independent-work' || currentState == 'course-work' || currentState == 'final-journal'"
+	*ngIf="currentState == 'journal-tab'"
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
-	[currentState]="currentState"></e-journal>
+	[currentState]="currentState"
+	[subState]="subState"></e-journal>
 </main>
 

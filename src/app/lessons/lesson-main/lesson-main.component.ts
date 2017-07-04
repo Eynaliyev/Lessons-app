@@ -8,10 +8,11 @@ import { UserService } from '../../shared/user.service';
 	selector: 'lesson-main',
 	templateUrl: 'lesson-main.component.html'
 }) 
-export class LessonMainComponent implements OnInit {
+export class LessonMainComponent implements OnInit, OnChanges {
 	lesson: '';
 	currentLang;
 	currentState;
+	subState;
 	students;
 	teachers;
 	journal;
@@ -64,5 +65,11 @@ export class LessonMainComponent implements OnInit {
 		this.currentState = event;
 		console.log('current state: ', this.currentState);
 	}
-
+	setSubState(event){
+		this.subState = event;
+		console.log('current sub state: ', this.subState);
+	}
+	ngOnChanges(changes){
+		console.log(changes);
+	}
 }

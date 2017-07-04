@@ -10,6 +10,7 @@ export class MeetingComponent implements OnChanges {
 	@Input() topics;
 	@Input() currentLang;
 	@Input() currentState;
+	@Input() subState;
 
 	ngOnChanges(){
 		console.log(this.currentState);

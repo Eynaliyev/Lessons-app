@@ -86,10 +86,12 @@ import { TeachersListComponent } from './teachers/teachers-list/teachers-list.co
 import { LessonMainComponent } from './lessons/lesson-main/lesson-main.component';
 import { LessonAboutComponent } from './lessons/lesson-about/lesson-about.component';
 import { LessonHeaderComponent } from './lessons/lesson-header/lesson-header.component';
+import { LessonSubHeaderComponent } from './lessons/lesson-sub-header/lesson-sub-header.component';
 import { FinalJournalComponent } from './lessons/final-journal/final-journal.component';
 import { JournalAddComponent } from './lessons/journal-add/journal-add.component';
 import { JournalEditComponent } from './lessons/journal-edit/journal-edit.component';
 import { EJournalComponent } from './lessons/e-journal/e-journal.component';
+import { ActivityJournalComponent } from './lessons/activity-journal/activity-journal.component';
 import { MeetingsListComponent } from './lessons/meetings-list/meetings-list.component';
 import { MeetingsPostPanelComponent } from './lessons/meetings-post-panel/meetings-post-panel.component';
 import { MembersListComponent } from './lessons/members-list/members-list.component';
@@ -187,11 +189,13 @@ export function HttpLoaderFactory(http: Http) {
 		TeacherTedrisComponent,
 		LessonMainComponent, 
 		LessonHeaderComponent, 
+		LessonSubHeaderComponent, 
 		LessonAboutComponent, 
 		FinalJournalComponent,
 		JournalAddComponent,
 		JournalEditComponent,
 		EJournalComponent,
+		ActivityJournalComponent,
 		MeetingsListComponent,
 		MeetingsPostPanelComponent,
 		MembersListComponent,
