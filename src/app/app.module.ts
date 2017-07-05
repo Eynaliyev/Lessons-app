@@ -11,7 +11,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
-import {DropdownModule} from "ngx-dropdown";
+import { DropdownModule } from "ngx-dropdown";
+import { Ng2TableModule } from 'ng2-table/ng2-table';
 
 // services
 import { SpinnerService } from "./core/spinner/spinner.service";
@@ -88,6 +89,8 @@ import { LessonAboutComponent } from './lessons/lesson-about/lesson-about.compon
 import { LessonHeaderComponent } from './lessons/lesson-header/lesson-header.component';
 import { LessonSubHeaderComponent } from './lessons/lesson-sub-header/lesson-sub-header.component';
 import { FinalJournalComponent } from './lessons/final-journal/final-journal.component';
+import { CourseWorkJournalComponent } from './lessons/course-work-journal/course-work-journal.component';
+import { IndependentWorkJournalComponent } from './lessons/independent-work-journal/independent-work-journal.component';
 import { JournalAddComponent } from './lessons/journal-add/journal-add.component';
 import { JournalEditComponent } from './lessons/journal-edit/journal-edit.component';
 import { EJournalComponent } from './lessons/e-journal/e-journal.component';
@@ -127,6 +130,7 @@ export function HttpLoaderFactory(http: Http) {
 		SelectModule,
 		DropdownModule,
 		LoadersCssModule,
+		Ng2TableModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -192,6 +196,8 @@ export function HttpLoaderFactory(http: Http) {
 		LessonSubHeaderComponent, 
 		LessonAboutComponent, 
 		FinalJournalComponent,
+		IndependentWorkJournalComponent,
+		CourseWorkJournalComponent,
 		JournalAddComponent,
 		JournalEditComponent,
 		EJournalComponent,

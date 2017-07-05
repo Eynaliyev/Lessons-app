@@ -90,13 +90,13 @@ export class LessonService {
 			return this.http.get(topicsUrl)
 			.toPromise()
 			.then(response => {
-				console.log('response.json().data for journal by Lesson id', response.json().data);
+				console.log('response.json().data for topics by Lesson id', response.json().data);
 				return this.mapTopics(response);
 			})
             .catch(this.handleError);
 		});
 	}
-	getJournal(id){
+	getActivityJournal(id){
 		return this.userService.getToken().then(token =>{
 			let journalUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/journal?token=${token}&subjectId=${id}&pageNum=1`;
 			console.log('studentsByLessonUrl', journalUrl);

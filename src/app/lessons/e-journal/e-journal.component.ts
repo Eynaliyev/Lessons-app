@@ -9,6 +9,7 @@ export class EJournalComponent {
 	@Input() currentState;
 	@Input() currentLang;
 	@Input() subState;
+	@Input() activityJournal;
 	ngOnInit(){
 		console.log('currentState is: ', this.currentState);
 	}

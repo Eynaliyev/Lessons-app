@@ -7,8 +7,9 @@ import { Component, Input } from '@angular/core';
 }) 
 export class ActivityJournalComponent {
 	@Input() lesson;
-	@Input() journal;
+	@Input() activityJournal;
 	@Input() currentLang;
 	ngOnInit(){
+		console.log('activity journal: ', this.activityJournal);
 	}
 }

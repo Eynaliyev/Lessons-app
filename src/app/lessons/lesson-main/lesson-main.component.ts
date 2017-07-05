@@ -15,7 +15,7 @@ export class LessonMainComponent implements OnInit, OnChanges {
 	subState;
 	students;
 	teachers;
-	journal;
+	activityJournal;
 	topics;
 	states = ['lesson-about', 'members-list', 'meeting', 'e-journal', 'final-journal', 'journal-add', 'journal-edit', 'meeting-files']
 
@@ -35,10 +35,20 @@ export class LessonMainComponent implements OnInit, OnChanges {
 				this.lesson = lesson;
 				console.log('this lesson: ', lesson);
 			});
-			this.lessonService.getJournal(id)
-			.then(journal => {
-				this.journal = journal;
-				console.log('journal in this lesson: ', journal);
+			this.lessonService.getActivityJournal(id)
+			.then(activityJournal => {
+				//this.journal = activityJournal;
+				console.log('activityJournal in this lesson: ', activityJournal);
+				let students = activityJournal.journalStudentList;
+				let dates = activityJournal.journalScheduleList;
+				let grades = activityJournal.journalScireList
+				students.forEach((student, index) => this.activityJournal[index][0] = student);
+				dates.forEach((date, index) => this.activityJournal[0][index] = date);
+				grades.forEach(grade => {
+					let xIndex = dates.indexOf(dates.filter(date => date.journalTypeId = grade.scheduleId));
+					let yIndex = students.indexOf(students.filter(student => student.studentId = grade.studentIdForScore));
+					this.activityJournal[yIndex][xIndex] = grade;
+				});
 			});
 			this.lessonService.getTopics(id)
 			.then(topics => {

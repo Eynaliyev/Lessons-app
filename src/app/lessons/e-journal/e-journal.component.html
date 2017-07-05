@@ -1,8 +1,17 @@
 <activity-journal *ngIf="subState == 'activity'" 
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
-	[journal]="journal"
+	[activityJournal]="activityJournal"
 	></activity-journal>
+<independent-work-journal 
+	*ngIf="subState == 'independent-work'"
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"
+	></independent-work-journal>
+<course-work-journal 
+	*ngIf="subState == 'course-work'"
+	[lesson] = 'lesson'
+	[currentLang]="currentLang"></course-work-journal>
 <final-journal 
 	*ngIf="subState == 'final-journal'"
 	[lesson] = 'lesson'

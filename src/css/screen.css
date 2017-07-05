@@ -279,7 +279,7 @@ header:after { content: ""; display: table; clear: both; }
 .left-aside .aside-nav .selected-structure .structure-btn { display: block; cursor: pointer;}
 .left-aside .aside-nav .selected-structure .aside-nav-list { display: none; width: calc(100%); background-color: #D5F3FC; text-align: center; font-size: 1.4rem; line-height: 40px; }
 .left-aside .aside-content { padding-right: 15px; padding-top: 15px; }
-.left-aside .aside-content .aside-block { border-bottom: 1px solid #D5F3FC; padding-top: 15px; padding-bottom: 15px; padding-left: 15px; }
+.left-aside .aside-content .aside-block { border-bottom: 1px solid #D5F3FC; padding-top: 15px; padding-bottom: 15px; padding-left: 15px; margin-top: 40px;}
 .left-aside .aside-content .aside-block .aside-block-spn { float: right; }
 .left-aside .aside-content .aside-content-image { display: block; width: 100%; margin: 0 auto; max-width: 200px; margin-bottom: 15px; }
 .left-aside .aside-content .aside-content-header-title { text-align: center; }
