@@ -96,6 +96,20 @@ export class LessonService {
             .catch(this.handleError);
 		});
 	}
+	getMaterials(id){
+		return this.userService.getToken().then(token =>{
+			let materialUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectTopicDoc?token=${token}&subjectId=${id}`;
+			console.log('materialUrl', materialUrl);
+			return this.http.get(materialUrl)
+			.toPromise()
+			.then(response => {
+				console.log('response.json().data for journal by Lesson id', response.json().data);
+				return response.json().data;
+			})
+            .catch(this.handleError);
+		});
+		
+	}
 	getActivityJournal(id){
 		return this.userService.getToken().then(token =>{
 			let journalUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/journal?token=${token}&subjectId=${id}&pageNum=1`;

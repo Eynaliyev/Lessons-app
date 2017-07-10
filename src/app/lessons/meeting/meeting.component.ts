@@ -8,6 +8,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class MeetingComponent implements OnChanges {
 	@Input() lesson;
 	@Input() topics;
+	@Input() materials;
 	@Input() currentLang;
 	@Input() currentState;
 	@Input() subState;

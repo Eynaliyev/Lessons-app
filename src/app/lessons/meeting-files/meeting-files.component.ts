@@ -9,5 +9,6 @@ export class MeetingFilesComponent {
 	@Input() lesson;
 	@Input() topics;
 	@Input() currentLang;
+	@Input() materials;
 
 }

@@ -17,6 +17,7 @@ export class LessonMainComponent implements OnInit, OnChanges {
 	teachers;
 	activityJournal;
 	topics;
+	materials;
 	states = ['lesson-about', 'members-list', 'meeting', 'e-journal', 'final-journal', 'journal-add', 'journal-edit', 'meeting-files']
 
 	constructor(
@@ -38,22 +39,28 @@ export class LessonMainComponent implements OnInit, OnChanges {
 			this.lessonService.getActivityJournal(id)
 			.then(activityJournal => {
 				//this.journal = activityJournal;
-				console.log('activityJournal in this lesson: ', activityJournal);
+				console.log('activityJournal in this lesson: ', activityJournal, this.activityJournal);
 				let students = activityJournal.journalStudentList;
 				let dates = activityJournal.journalScheduleList;
 				let grades = activityJournal.journalScireList
 				students.forEach((student, index) => this.activityJournal[index][0] = student);
 				dates.forEach((date, index) => this.activityJournal[0][index] = date);
 				grades.forEach(grade => {
-					let xIndex = dates.indexOf(dates.filter(date => date.journalTypeId = grade.scheduleId));
+					let xIndex = dates.indexOf(dates.filter(date => date.id = grade.scheduleId));
 					let yIndex = students.indexOf(students.filter(student => student.studentId = grade.studentIdForScore));
 					this.activityJournal[yIndex][xIndex] = grade;
 				});
+				console.log('activity journal in lesson-main: ', this.activityJournal);
 			});
 			this.lessonService.getTopics(id)
 			.then(topics => {
 				this.topics = topics;
 				console.log(' topics in this lesson: ', topics);
+			});
+			this.lessonService.getMaterials(id)
+			.then(materials => {
+				this.materials = materials;
+				console.log(' materials in this lesson: ', materials);
 			});
 			this.lessonService.getStudentsByLesson(id)
 			.then(students => {

@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
 
 @Component({
 	
 	selector: 'lesson-sub-header',
 	templateUrl: 'lesson-sub-header.component.html'
 }) 
-export class LessonSubHeaderComponent implements OnChanges {
+export class LessonSubHeaderComponent implements OnInit, OnChanges {
 	@Input () currentState: string;
 	@Input() lesson;
 	@Input () states;
@@ -17,6 +17,8 @@ export class LessonSubHeaderComponent implements OnChanges {
 
 	// event emitting method that changes the state in the parent component of lesson-main 
 	// it gets called from nav buttons that control the in-page navigation
+	ngOnInit(){
+	}
 	navSelectSub(value){
 		this.subState = value;
 		console.log('currentSubState in subheader: ', this.subState);
