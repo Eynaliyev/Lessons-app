@@ -2,81 +2,19 @@
 	<table class="st-table">
 		<tr>
 			<th>Istirakcilar</th>
-			<th>
+			<th *ngFor="let column of columns">
 				<a href="journal-edit.php" class="table-edit-btn">
 					<img src="assets/img/icons/edit-blue.svg" alt="">
 				</a>
-				27.12.2012
+				{{column[0].schemaDate}}
 				<a class="article-info" data-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, voluptatem.">
 					<img src="assets/img/icons/icon_info.svg" alt="">
 				</a>
 			</th>
 		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td>6</td>
-			<td>9</td>
-			<td>6</td>
-			<td>7</td>
-			<td>10</td>
-			<td>3</td>
-			<td>5</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td>6</td>
-			<td>9</td>
-			<td>6</td>
-			<td>7</td>
-			<td>10</td>
-			<td>3</td>
-			<td>5</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td>6</td>
-			<td>9</td>
-			<td>6</td>
-			<td>7</td>
-			<td>10</td>
-			<td>3</td>
-			<td>5</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td>6</td>
-			<td>9</td>
-			<td>6</td>
-			<td>7</td>
-			<td>10</td>
-			<td>3</td>
-			<td>5</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td>6</td>
-			<td>9</td>
-			<td>6</td>
-			<td>7</td>
-			<td>10</td>
-			<td>3</td>
-			<td>5</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td>6</td>
-			<td>9</td>
-			<td>6</td>
-			<td>7</td>
-			<td>10</td>
-			<td>3</td>
-			<td>5</td>
-			<td>6</td>
+		<tr *ngFor="let row of rows">
+			<td>{{row[0][0].studentName}}</td>
+			<td *ngFor="let grade of row[0]" [innerHTML]='grade.score'></td>
 		</tr>
 	</table>
 	<ul class="pagination">
