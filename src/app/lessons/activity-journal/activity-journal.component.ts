@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, EvenEmitter, Output } from '@angular/core';
 
 @Component({
 	selector: 'activity-journal',
@@ -9,11 +9,15 @@ export class ActivityJournalComponent {
 	@Input() lesson;
 	@Input() activityJournal;
 	@Input() currentLang;
+	@Output() edit: new EventEmitter(); 
 	rows;
 	columns;
 	ngOnInit(){
-		this.rows = this.activityJournal[0].slice(1, 6);
+		this.rows = this.activityJournal[0].slice(1, this.activityJournal[0].length);
 		this.columns = this.activityJournal.slice(1, 9);
 		console.log('rows, columns, activity journal: ', this.rows, this.columns);
+	}
+	goToEdit(){
+		this.edit.emit('edit-journal');
 	}
 }

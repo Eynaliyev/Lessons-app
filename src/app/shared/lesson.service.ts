@@ -113,11 +113,24 @@ export class LessonService {
 	getActivityJournal(id){
 		return this.userService.getToken().then(token =>{
 			let journalUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/journal?token=${token}&subjectId=${id}&pageNum=1`;
-			console.log('studentsByLessonUrl', journalUrl);
+			console.log('activityJournalUrl', journalUrl);
 			return this.http.get(journalUrl)
 			.toPromise()
 			.then(response => {
-				console.log('response.json().data for journal by Lesson id', response.json().data);
+				console.log('response.json().data for activity journal by Lesson id', response.json().data);
+				return response.json().data;
+			})
+            .catch(this.handleError);
+		});
+	}
+	getFinalJournal(id){
+		return this.userService.getToken().then(token =>{
+			let finalJournalUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/journalResult?token=${token}&subjectId=${id}&pageNum=1`
+			console.log('finalJournalUrl', finalJournalUrl);
+			return this.http.get(finalJournalUrl)
+			.toPromise()
+			.then(response => {
+				console.log('response.json().data for final journal by Lesson id', response.json().data);
 				return response.json().data;
 			})
             .catch(this.handleError);

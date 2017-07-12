@@ -3,7 +3,7 @@
 		<tr>
 			<th>Istirakcilar</th>
 			<th *ngFor="let column of columns">
-				<a href="journal-edit.php" class="table-edit-btn">
+				<a href="journal-edit.php" class="table-edit-btn" (click)="goToEdit(); false">
 					<img src="assets/img/icons/edit-blue.svg" alt="">
 				</a>
 				{{column[0].schemaDate}}

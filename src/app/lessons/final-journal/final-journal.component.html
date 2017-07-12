@@ -1,103 +1,22 @@
 <div class="journal-table st-block-style">
 	<table class="st-table">
 		<tr>
-			<th>Istirakcilar</th>
-			<th>Orta qiymet</th>
-			<th>Devamiyyet</th>
-			<th>Serbest is</th>
-			<th>Kurs isi</th>
-			<th>Imtahana qeder</th>
-			<th>Imtahan</th>
-			<th>Yekun bal</th>
-			<th>Yekun</th>
+			<th *ngFor="let column of columns">{{column}}</th>
 		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
-		</tr>
-		<tr>
-			<td>Emily Way</td>
-			<td class="middle-mark">6</td>
-			<td class="good-mark">9</td>
-			<td class="best-mark">10</td>
-			<td class="low-mark">2</td>
-			<td class="good-mark">45</td>
-			<td class="good-mark">41</td>
-			<td class="good-mark">86</td>
-			<td class="good-mark">B</td>
+		<tr *ngFor="let row of rows">
+			<td>{{row.studentFullName}}</td>
+			<td class="middle-mark">{{row.name}}</td>
+			<td class="good-mark">{{row.name}}</td>
+			<td class="best-mark">{{row.serbestIsh}}</td>
+			<td class="low-mark">
+			{{row.kursIsh}}
+			</td>
+			<td class="good-mark">{{row.beforeExamTotal}}</td>
+			<td class="good-mark">{{row.ExamScore}}</td>
+			<td class="good-mark">{{row.name}}</td>
+			<td class="good-mark">
+			{{row.name}}
+			</td>
 		</tr>
 	</table>
 	<ul class="pagination">

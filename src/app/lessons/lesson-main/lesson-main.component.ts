@@ -16,6 +16,7 @@ export class LessonMainComponent implements OnInit, OnChanges {
 	students;
 	teachers;
 	activityJournal = [[[]]];
+	finalJournal;
 	topics;
 	materials;
 	states = ['lesson-about', 'members-list', 'meeting', 'e-journal', 'final-journal', 'journal-add', 'journal-edit', 'meeting-files']
@@ -100,6 +101,11 @@ export class LessonMainComponent implements OnInit, OnChanges {
 				});
 				console.log('activity journal in lesson-main: ', this.activityJournal);
 			});
+			this.lessonService.getFinalJournal(id)
+			.then(finalJournal => {
+				this.finalJournal = finalJournal.journalResultList;
+				console.log('final journal in lesson-main: ', this.finalJournal);
+			});
 			this.lessonService.getTopics(id)
 			.then(topics => {
 				this.topics = topics;
@@ -136,5 +142,8 @@ export class LessonMainComponent implements OnInit, OnChanges {
 	}
 	ngOnChanges(changes){
 		console.log(changes);
+	}
+	goToEdit(){
+		this.setSubState('journal-edit');
 	}
 }

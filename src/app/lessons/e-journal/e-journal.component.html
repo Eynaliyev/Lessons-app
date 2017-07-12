@@ -15,7 +15,10 @@
 <final-journal 
 	*ngIf="subState == 'final-journal'"
 	[lesson] = 'lesson'
-	[currentLang]="currentLang"></final-journal>
+	[currentLang]="currentLang"
+	[finalJournal]="finalJournal"
+	(edit)="goToEdit()"
+	></final-journal>
 <journal-edit *ngIf="subState == 'journal-edit'" 
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
