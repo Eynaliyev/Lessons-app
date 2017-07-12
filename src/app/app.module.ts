@@ -39,50 +39,8 @@ import { SortPipe } from './shared/sort.pipe';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 // University components
-import { UniversitiesInfoComponent } from './universities/universities-info/universities-info.component';
-import { UniversitySearchComponent } from './universities/university-search/university-search.component';
-import { UniversityFormComponent } from './universities/university-form/university-form.component';
-import { UniversitySortComponent } from './universities/university-sort/university-sort.component';
 import { UniversityAsideComponent } from './universities/university-aside/university-aside.component';
-import { UniversityDepartmentsInfoComponent } from './universities/university-departments-info/university-departments-info.component';
-import { UniversitiesListComponent } from './universities/universities-list/universities-list.component';
-import { DepartmentListComponent } from './universities/university-departments-list/university-departments-list.component';
-import { FacultyListComponent } from './universities/faculty-list/faculty-list.component';
-import { SpecialtyListComponent } from './universities/specialty-list/specialty-list.component';
-// Student Cmponents
-import { StudentSearchComponent } from './students/student-search/student-search.component';
-import { StudentFilterComponent } from './students/student-filter/student-filter.component';
-import { StudentSortComponent } from './students/student-sort/student-sort.component';
-import { StudentChartsComponent } from './shared/student-charts.component';
-import { StudentProfileComponent } from './students/student-profile/student-profile.component';
-import { StudentAboutComponent } from './students/student-about/student-about.component';
-import { StudentTedrisComponent } from './students/student-tedris/student-tedris.component';
-import { StudentBioComponent } from './students/student-bio/student-bio.component';
-import { StudentContactComponent } from './students/student-contact/student-contact.component';
-import { StudentDocsComponent } from './students/student-docs/student-docs.component';
-import { StudentHeaderComponent } from './students/student-header/student-header.component';
-import { StudentMainInfoComponent } from './students/student-main-info/student-main-info.component';
-import { StudentGradeFilterComponent } from './students/student-grade-filter/student-grade-filter.component';
-import { StudentGradePanelComponent } from './students/student-grade-panel/student-grade-panel.component';
-import { StudentPlanPanelComponent } from './students/student-plan-panel/student-plan-panel.component';
-import { StudentsListComponent } from './students/students-list/students-list.component';
-// Teacher Components
-import { TeacherAboutComponent } from './teachers/teacher-about/teacher-about.component';
-import { TeacherTedrisComponent } from './teachers/teacher-tedris/teacher-tedris.component';
-import { TeacherBioComponent } from './teachers/teacher-bio/teacher-bio.component';
-import { TeacherContactComponent } from './teachers/teacher-contact/teacher-contact.component';
-import { TeacherDocsComponent } from './teachers/teacher-docs/teacher-docs.component';
-import { TeacherHeaderComponent } from './teachers/teacher-header/teacher-header.component';
-import { TeacherMainInfoComponent } from './teachers/teacher-main-info/teacher-main-info.component';
-import { TeacherGradeFilterComponent } from './teachers/teacher-grade-filter/teacher-grade-filter.component';
-import { TeacherGradePanelComponent } from './teachers/teacher-grade-panel/teacher-grade-panel.component';
-import { TeacherPlanPanelComponent } from './teachers/teacher-plan-panel/teacher-plan-panel.component';
-import { TeacherSortComponent } from './teachers/teacher-sort/teacher-sort.component';
-import { TeacherProfileComponent } from './teachers/teacher-profile/teacher-profile.component';
-import { TeacherSearchComponent } from './teachers/teacher-search/teacher-search.component';
-import { TeacherFilterComponent } from './teachers/teacher-filter/teacher-filter.component';
-import { TeacherChartsComponent } from './shared/teacher-charts.component';
-import { TeachersListComponent } from './teachers/teachers-list/teachers-list.component';
+
 // Lesson Components
 import { LessonMainComponent } from './lessons/lesson-main/lesson-main.component';
 import { LessonAboutComponent } from './lessons/lesson-about/lesson-about.component';
@@ -150,47 +108,6 @@ export function HttpLoaderFactory(http: Http) {
 		FirstLettersPipe,
 		DashboardComponent,
 		UniversityAsideComponent,
-		UniversityDepartmentsInfoComponent,
-		DepartmentListComponent,
-		UniversitiesListComponent,
-		UniversitiesInfoComponent,
-		UniversitySearchComponent,
-		UniversityFormComponent,
-		UniversitySortComponent,
-		FacultyListComponent,
-		SpecialtyListComponent,
-		StudentFilterComponent,
-		StudentSearchComponent,
-		StudentSortComponent,
-		StudentAboutComponent,
-		StudentBioComponent,
-		StudentContactComponent,
-		StudentDocsComponent,
-		StudentHeaderComponent,
-		StudentChartsComponent,
-		StudentMainInfoComponent,
-		StudentGradeFilterComponent,
-		StudentGradePanelComponent,
-		StudentPlanPanelComponent,
-		StudentTedrisComponent,
-		StudentProfileComponent,
-		StudentsListComponent,
-		TeacherSortComponent,
-		TeacherFilterComponent,
-		TeacherProfileComponent,
-		TeacherSearchComponent,
-		TeacherChartsComponent,
-		TeachersListComponent,
-		TeacherAboutComponent,
-		TeacherBioComponent,
-		TeacherContactComponent,
-		TeacherDocsComponent,
-		TeacherHeaderComponent,
-		TeacherMainInfoComponent,
-		TeacherGradeFilterComponent,
-		TeacherGradePanelComponent,
-		TeacherPlanPanelComponent,
-		TeacherTedrisComponent,
 		LessonMainComponent, 
 		LessonHeaderComponent, 
 		LessonSubHeaderComponent, 
