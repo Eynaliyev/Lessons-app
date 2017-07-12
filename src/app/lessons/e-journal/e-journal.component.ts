@@ -11,7 +11,7 @@ export class EJournalComponent {
 	@Input() subState;
 	@Input() activityJournal;
 	@Input() finalJournal;
-	@Output() edit: new EventEmitter(); 
+	@Output() edit = new EventEmitter(); 
 	ngOnInit(){
 		console.log('currentState is: ', this.currentState);
 	}

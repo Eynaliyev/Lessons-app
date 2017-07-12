@@ -1,5 +1,5 @@
 
-import { Component, Input, EvenEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
 	selector: 'activity-journal',
@@ -9,7 +9,7 @@ export class ActivityJournalComponent {
 	@Input() lesson;
 	@Input() activityJournal;
 	@Input() currentLang;
-	@Output() edit: new EventEmitter(); 
+	@Output() edit = new EventEmitter(); 
 	rows;
 	columns;
 	ngOnInit(){
