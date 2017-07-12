@@ -18,6 +18,8 @@ export class ActivityJournalComponent {
 		console.log('rows, columns, activity journal: ', this.rows, this.columns);
 	}
 	goToEdit(){
+		console.log('emitting from activity-journal');
+
 		this.edit.emit('edit-journal');
 	}
 }

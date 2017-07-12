@@ -144,6 +144,7 @@ export class LessonMainComponent implements OnInit, OnChanges {
 		console.log(changes);
 	}
 	goToEdit(){
+		console.log('setting sub state to edit');
 		this.setSubState('journal-edit');
 	}
 }

@@ -15,7 +15,8 @@ export class EJournalComponent {
 	ngOnInit(){
 		console.log('currentState is: ', this.currentState);
 	}
-	goToEdit(){
+	goToEdit(event){
+		console.log('emitting from e-journal');
 		this.edit.emit('edit-journal');
 	}
 }

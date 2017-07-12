@@ -2,6 +2,7 @@
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
 	[activityJournal]="activityJournal"
+	(edit)="goToEdit($event)"
 	></activity-journal>
 <independent-work-journal 
 	*ngIf="subState == 'independent-work'"
@@ -17,7 +18,6 @@
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
 	[finalJournal]="finalJournal"
-	(edit)="goToEdit()"
 	></final-journal>
 <journal-edit *ngIf="subState == 'journal-edit'" 
 	[lesson] = 'lesson'
