@@ -15,7 +15,7 @@ export class LessonMainComponent implements OnInit, OnChanges {
 	subState;
 	students;
 	teachers;
-	activityJournal;
+	activityJournal = [[[]]];
 	topics;
 	materials;
 	states = ['lesson-about', 'members-list', 'meeting', 'e-journal', 'final-journal', 'journal-add', 'journal-edit', 'meeting-files']
@@ -42,13 +42,61 @@ export class LessonMainComponent implements OnInit, OnChanges {
 				console.log('activityJournal in this lesson: ', activityJournal, this.activityJournal);
 				let students = activityJournal.journalStudentList;
 				let dates = activityJournal.journalScheduleList;
-				let grades = activityJournal.journalScireList
-				students.forEach((student, index) => this.activityJournal[index][0] = student);
-				dates.forEach((date, index) => this.activityJournal[0][index] = date);
+				let grades = activityJournal.journalScoreList;
+				let emptyGradesList = [];
+				for(var i = 0; i < dates.length; i++){
+					emptyGradesList.push(0);
+				}
+				//console.log('empty grades list ', emptyGradesList);
+				//console.log('activity journal before adding students: ', this.activityJournal);
+				// setting defaults
+				students.forEach((student, index) => {
+					//let studentArra = [student];
+					//console.log(typeof studentArra, typeof this.activityJournal[0]);
+					let fullStudent = [student].concat(emptyGradesList);
+					//console.log('empty list: ', emptyGradesList, 'fullStudent: ', fullStudent);
+					this.activityJournal[0].push([fullStudent]);
+				});
+				// adding dates
+				console.log('activity journal after adding students: ', this.activityJournal);
+				dates.forEach((date, index) => {
+					this.activityJournal.push([date]);
+				});
+				console.log('activity journal after adding dates: ', this.activityJournal);
 				grades.forEach(grade => {
-					let xIndex = dates.indexOf(dates.filter(date => date.id = grade.scheduleId));
-					let yIndex = students.indexOf(students.filter(student => student.studentId = grade.studentIdForScore));
-					this.activityJournal[yIndex][xIndex] = grade;
+					// finding a date index
+					let relevantDates = dates.filter(date => {
+						return date.id = grade.scheduleId;
+					});
+					//console.log('relevant Dates: ', relevantDates);
+					let dateIndex;
+					if(relevantDates.length != 0){
+						dateIndex = relevantDates[0];
+					} else { dateIndex = -1;}
+					let xIndex = dates.indexOf(dateIndex);
+					//console.log('xIndex = ', xIndex);
+					// NEEDS TO BE FIXE TO REFLECT THE CHANGES IN DATA STRUCTURE
+					// finding a student index
+					let relevantStudents = students.filter(student => {
+						return student.studentId = grade.studentIdForScore;
+					});
+					//console.log('relevant students: ', relevantStudents);
+					//doing this because studentIds are not unique for some reason
+					let studentIndex;
+					if(relevantStudents.length != 0){
+						studentIndex = relevantStudents[0];
+					} else { studentIndex = -1;}
+					//console.log('studentIndex: ', studentIndex);
+					let yIndex = students.indexOf(studentIndex);
+					//console.log('yIndex = ', yIndex);
+
+					// putting the grade where it belongs
+					if(xIndex != -1 && yIndex != -1){
+						//console.log('found someone: ', this.activityJournal[0][yIndex + 1][xIndex][xIndex + 1]);
+						this.activityJournal[0][yIndex + 1][xIndex][xIndex+1] = grade;
+					} else {
+						//console.log("grade: ", 'did not find a dates index: ', grade.scheduleId, 'and did not find a student index: ', grade.studentIdForScore, yIndex);
+					}
 				});
 				console.log('activity journal in lesson-main: ', this.activityJournal);
 			});
