@@ -19,8 +19,8 @@ var StudentService = (function () {
         this.studentsUrl = 'app/students'; // URL to web api
         this.headers = new Headers({ 'Content-Type': 'application/json' });
         this.authToken = this.userService.token;
-        this.realStudentsByUniUrl = "http://192.168.1.78:8082/UnibookHsisRest/students?token=" + this.authToken;
-        this.realStudentsUrl = "http://192.168.1.78:8082/UnibookHsisInfoRest/students?token=" + this.authToken;
+        this.realStudentsByUniUrl = "http://atis.edu.az/UnibookHsisRest/students?token=" + this.authToken;
+        this.realStudentsUrl = "http://atis.edu.az/UnibookHsisInfoRest/students?token=" + this.authToken;
     }
     //////////// need to build methods that would successfully 
     /// connect to the real api
@@ -91,7 +91,7 @@ var StudentService = (function () {
     };
     StudentService.prototype.getRealStudentById = function (id) {
         var _this = this;
-        this.realStudentByIdUrl = "http://192.168.1.78:8082/UnibookHsisRest/students/" + id + "?token=" + this.getToken();
+        this.realStudentByIdUrl = "http://atis.edu.az/UnibookHsisRest/students/" + id + "?token=" + this.getToken();
         console.log('realStudnetByIdURL', this.realStudentByIdUrl);
         return this.http.get(this.realStudentByIdUrl)
             .toPromise()
@@ -133,7 +133,7 @@ var StudentService = (function () {
     };
     StudentService.prototype.searchReal = function (term) {
         return this.http
-            .get("http://192.168.1.78:8082/AdministrationRest/users/search?keyWord=" + term + "&token=" + this.authToken)
+            .get("http://atis.edu.az/AdministrationRest/users/search?keyWord=" + term + "&token=" + this.authToken)
             .map(function (r) { return r.json().data; });
     };
     return StudentService;

@@ -27,7 +27,7 @@ var UserService = (function () {
         this.token = token;
         console.log('this.token: ', this.token);
         // setting url to fetch the user's data from
-        this.currentUserURL = "http://192.168.1.78:8082/ROS/profile?token=" + this.token;
+        this.currentUserURL = "http://atis.edu.az/ROS/profile?token=" + this.token;
         console.log('setting token in user service to: ', this.token);
     };
     UserService.prototype.login = function (token) {
@@ -77,7 +77,7 @@ var UserService = (function () {
             }
             else {
                 this.currentUserRole = "ERROR: unrecognized";
-                this.router.navigate(['192.168.1.78:8082/ROS/login?app=1000004']);
+                this.router.navigate(['atis.edu.az/ROS/login?app=1000004']);
             }
         }
         else {
@@ -85,7 +85,7 @@ var UserService = (function () {
         }
     };
     UserService.prototype.getModules = function () {
-        this.moduleUrl = "http://192.168.1.78:8082/ROS/applications/1000004/modules?token=" + this.token;
+        this.moduleUrl = "http://atis.edu.az/ROS/applications/1000004/modules?token=" + this.token;
         return this.http.get(this.moduleUrl)
             .toPromise()
             .then(function (response) {
@@ -105,7 +105,7 @@ var UserService = (function () {
             return "/student/" + this.currentUser.id;
         }
         else {
-            this.router.navigate(['192.168.1.78:8082/ROS/login?app=1000004']);
+            this.router.navigate(['atis.edu.az/ROS/login?app=1000004']);
         }
     };
     // I'm not sure about thse two methods - I think they may be doing the same shit
@@ -121,13 +121,13 @@ var UserService = (function () {
             this.router.navigate(["student", this.currentUser.id]);
         }
         else {
-            this.router.navigate(['192.168.1.78:8082/ROS/login?app=1000004']);
+            this.router.navigate(['atis.edu.az/ROS/login?app=1000004']);
         }
     };
     UserService.prototype.logout = function () {
         this.token = "";
         this.loggedIn = false;
-        this.router.navigate(['192.168.1.78:8082/ROS/login?app=1000004']);
+        this.router.navigate(['atis.edu.az/ROS/login?app=1000004']);
     };
     UserService.prototype.isLoggedIn = function () {
         return this.loggedIn;

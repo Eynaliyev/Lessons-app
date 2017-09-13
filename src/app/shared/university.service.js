@@ -23,7 +23,7 @@ var UniversityService = (function () {
     UniversityService.prototype.getRealUniversities = function () {
         var _this = this;
         this.authToken = this.userService.token;
-        this.realUniversitiesUrl = "http://192.168.1.78:8082/UnibookHsisInfoRest/hschools?token=" + this.authToken;
+        this.realUniversitiesUrl = "http://atis.edu.az/UnibookHsisInfoRest/hschools?token=" + this.authToken;
         console.log('getting structures list from: ', this.realUniversitiesUrl);
         return this.http.get(this.realUniversitiesUrl)
             .toPromise()
@@ -36,8 +36,8 @@ var UniversityService = (function () {
     /* used to dynamically set url - don't need it now?
     realUniversityUrl(){
         this.authToken = this.userService.token;
-        console.log('realUniversity URL in university.service ', `http://192.168.1.78:8082/UnibookHsisRest/structures?token=${this.authToken}`);
-        return `http://192.168.1.78:8082/UnibookHsisRest/structures?token=${this.authToken}`;
+        console.log('realUniversity URL in university.service ', `http://atis.edu.az/UnibookHsisRest/structures?token=${this.authToken}`);
+        return `http://atis.edu.az/UnibookHsisRest/structures?token=${this.authToken}`;
     }*/
     UniversityService.prototype.mapUnis = function (response) {
         // The response of the API has a results
@@ -84,9 +84,9 @@ var UniversityService = (function () {
     UniversityService.prototype.getRealUniversityById = function (id) {
         var _this = this;
         //previous url
-        //this.realUniversityByIdUrl = `http://192.168.1.78:8082/UnibookHsisRest/structures/${id}?token=${this.getToken()}`;
+        //this.realUniversityByIdUrl = `http://atis.edu.az/UnibookHsisRest/structures/${id}?token=${this.getToken()}`;
         // the new url sent to me from Tural
-        this.realUniversityByIdUrl = "http://192.168.1.78:8082/UnibookHsisInfoRest/hschools/" + id + "?token=" + this.getToken();
+        this.realUniversityByIdUrl = "http://atis.edu.az/UnibookHsisInfoRest/hschools/" + id + "?token=" + this.getToken();
         console.log('realUniversityByIdURL', this.realUniversityByIdUrl);
         return this.http.get(this.realUniversityByIdUrl)
             .toPromise()
@@ -97,9 +97,9 @@ var UniversityService = (function () {
     };
     UniversityService.prototype.getRealUniversityStats = function (id) {
         //previous url
-        //this.realUniversityByIdUrl = `http://192.168.1.78:8082/UnibookHsisRest/structures/${id}?token=${this.getToken()}`;
+        //this.realUniversityByIdUrl = `http://atis.edu.az/UnibookHsisRest/structures/${id}?token=${this.getToken()}`;
         // the new url sent to me from Tural
-        this.realUniversityStatsUrl = "http://192.168.1.78:8082/UnibookHsisInfoRest/hschools/" + id + "/statistics?token=" + this.getToken();
+        this.realUniversityStatsUrl = "http://atis.edu.az/UnibookHsisInfoRest/hschools/" + id + "/statistics?token=" + this.getToken();
         console.log('realUniversityStatsURL', this.realUniversityStatsUrl);
         return this.http.get(this.realUniversityStatsUrl)
             .toPromise()

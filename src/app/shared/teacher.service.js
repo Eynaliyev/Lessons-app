@@ -20,8 +20,8 @@ var TeacherService = (function () {
         this.headers = new Headers({ 'Content-Type': 'application/json' });
         //private authToken = localStorage.getItem('token');
         this.authToken = this.userService.token;
-        this.realTeachersByUniUrl = "http://192.168.1.78:8082/UnibookHsisRest/structures?token=" + this.authToken;
-        this.realTeachersUrl = "http://192.168.1.78:8082/UnibookHsisInfoRest/employees?token=" + this.authToken;
+        this.realTeachersByUniUrl = "http://atis.edu.az/UnibookHsisRest/structures?token=" + this.authToken;
+        this.realTeachersUrl = "http://atis.edu.az/UnibookHsisInfoRest/employees?token=" + this.authToken;
     }
     //////////// need to build methods that would successfully 
     /// connectto the real api
@@ -93,7 +93,7 @@ var TeacherService = (function () {
     };
     TeacherService.prototype.getRealTeacherById = function (id) {
         var _this = this;
-        this.realTeacherByIdUrl = "http://192.168.1.78:8082/UnibookHsisRest/teachers/" + id + "?token=" + this.getToken();
+        this.realTeacherByIdUrl = "http://atis.edu.az/UnibookHsisRest/teachers/" + id + "?token=" + this.getToken();
         console.log('realTeacherByIdURL', this.realTeacherByIdUrl);
         return this.http.get(this.realTeacherByIdUrl)
             .toPromise()

@@ -33,7 +33,7 @@ export class LessonService {
 		return this.userService.getToken().then(token =>{
 			console.log('current user token: ', token);	
 
-	 		this.realLessonsUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectGroup?token=${token}&studentId=0&employeeId=0&orgId=0&semesterId=1000033&groupId=0&code=&facultyId=0&page=${page}&pageSize=50`;
+	 		this.realLessonsUrl = `http://atis.edu.az/UnibookHsisInfoRest/education/subjectGroup?token=${token}&studentId=0&employeeId=0&orgId=0&semesterId=1000033&groupId=0&code=&facultyId=0&page=${page}&pageSize=50`;
 			console.log('getting real lessons list from', this.realLessonsUrl);		
 			return this.http.get(this.realLessonsUrl)
 			.toPromise()
@@ -46,7 +46,7 @@ export class LessonService {
 	}
 	getLessonById(id): Promise<any> {
 		return this.userService.getToken().then(token =>{
-			this.realLessonByIdUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectInfo?token=${token}&subjectId=${id}`;		
+			this.realLessonByIdUrl = `http://atis.edu.az/UnibookHsisInfoRest/education/subjectInfo?token=${token}&subjectId=${id}`;		
 			console.log('realLessonByIdURL', this.realLessonByIdUrl);
 			return this.http.get(this.realLessonByIdUrl)
 			.toPromise()
@@ -59,7 +59,7 @@ export class LessonService {
 	}
 	getStudentsByLesson(id){
 		return this.userService.getToken().then(token =>{
-			let studentsByLessonUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/studentBySubject?token=${token}&subjectId=${id}`;
+			let studentsByLessonUrl = `http://atis.edu.az/UnibookHsisInfoRest/education/studentBySubject?token=${token}&subjectId=${id}`;
 			console.log('studentsByLessonUrl', studentsByLessonUrl);
 			return this.http.get(studentsByLessonUrl)
 			.toPromise()
@@ -72,7 +72,7 @@ export class LessonService {
 	}
 	getTeachersByLesson(id){
 		return this.userService.getToken().then(token =>{
-			let teachersByLessonUrl = `192.168.1.78:8082/UnibookHsisInfoRest/education/employeeBySubject?token=${token}&subjectId=${id}`;
+			let teachersByLessonUrl = `atis.edu.az/UnibookHsisInfoRest/education/employeeBySubject?token=${token}&subjectId=${id}`;
 			console.log('teachersByLessonUrl', teachersByLessonUrl);
 			return this.http.get(teachersByLessonUrl)
 			.toPromise()
@@ -85,7 +85,7 @@ export class LessonService {
 	}
 	getTopics(id){
 		return this.userService.getToken().then(token =>{
-			let topicsUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectTopic?token=${token}&subjectId=${id}`;
+			let topicsUrl = `http://atis.edu.az/UnibookHsisInfoRest/education/subjectTopic?token=${token}&subjectId=${id}`;
 			console.log('studentsByLessonUrl', topicsUrl);
 			return this.http.get(topicsUrl)
 			.toPromise()
@@ -98,7 +98,7 @@ export class LessonService {
 	}
 	getMaterials(id){
 		return this.userService.getToken().then(token =>{
-			let materialUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/subjectTopicDoc?token=${token}&subjectId=${id}`;
+			let materialUrl = `http://atis.edu.az/UnibookHsisInfoRest/education/subjectTopicDoc?token=${token}&subjectId=${id}`;
 			console.log('materialUrl', materialUrl);
 			return this.http.get(materialUrl)
 			.toPromise()
@@ -112,7 +112,7 @@ export class LessonService {
 	}
 	getActivityJournal(id){
 		return this.userService.getToken().then(token =>{
-			let journalUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/journal?token=${token}&subjectId=${id}&pageNum=1`;
+			let journalUrl = `http://atis.edu.az/UnibookHsisInfoRest/education/journal?token=${token}&subjectId=${id}&pageNum=1`;
 			console.log('activityJournalUrl', journalUrl);
 			return this.http.get(journalUrl)
 			.toPromise()
@@ -125,7 +125,7 @@ export class LessonService {
 	}
 	getFinalJournal(id){
 		return this.userService.getToken().then(token =>{
-			let finalJournalUrl = `http://192.168.1.78:8082/UnibookHsisInfoRest/education/journalResult?token=${token}&subjectId=${id}&pageNum=1`
+			let finalJournalUrl = `http://atis.edu.az/UnibookHsisInfoRest/education/journalResult?token=${token}&subjectId=${id}&pageNum=1`
 			console.log('finalJournalUrl', finalJournalUrl);
 			return this.http.get(finalJournalUrl)
 			.toPromise()
