@@ -1,11 +1,14 @@
 <div class="container meetings-container">
 <!-- meetings add -->
-	<meetings-post-panel *ngIf="subState == 'topics'" ></meetings-post-panel>
+	<meetings-post-panel *ngIf="topic"
+   [topic]="topic"
+  ></meetings-post-panel>
 
 	<!-- meetings blocks -->
-	<meetings-list  *ngIf="subState == 'topics'" 
-	[topics]="topics"></meetings-list>
-	<meeting-files *ngIf="subState == 'meeting-files'" 
+	<meetings-list  *ngIf="subState == 'topics'"
+	[topics]="topics"
+  ></meetings-list>
+	<meeting-files *ngIf="subState == 'meeting-files'"
 	[currentLang]="currentLang"
 	[lesson] = 'lesson'
 	[topics]="topics"

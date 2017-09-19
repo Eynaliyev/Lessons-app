@@ -7,16 +7,17 @@ export interface Language{
 export interface Topic{
     name: string,
     date: string,
-    time: string,
-    about: string
+    time: string
 }
-export interface Participant{
+export interface Participant {
     name: string,
     status: string,
     specialty: string,
     group: string
 }
-
+export interface Student {
+  name: string
+}
 export class Lesson {
   constructor(
     public id?: number,
@@ -27,7 +28,8 @@ export class Lesson {
     public semester?: string,
     public info?: string,
     public employees?: Employee[],
-    public languages?: Language[],
+
+    public languages?: string[],
     public nextMeeting?: string,
     public nextTopicName?: string,
     public subjectname?: string

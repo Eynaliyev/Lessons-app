@@ -1,10 +1,10 @@
 <div class="meetings-add-table st-block-style">
 	<div class="meetings-add-top">
-		<input type="text" placeholder="Movzunun adını qeyd edin" class="st-input">
+		<input type="text" placeholder="{{topic.name}}" class="st-input">
 		<div class="meetings-info-data">
-			<p>12.12</p>
+			<p>{{topic.time}}</p>
 			<img src="assets/img/icons/clock.svg" alt="">
-			<p>12.12.2012</p>
+			<p>{{topic.date}}</p>
 			<img src="assets/img/icons/calendar.svg" alt="">
 		</div>
 	</div>
@@ -15,8 +15,8 @@
 
 	<div class="meetings-add-bottom">
 		<ul>
-			<li>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, aspernatur. 
+			<!--<li>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, aspernatur.
 					<span>
 						<img src="assets/img/icons/success.svg" alt="">
 					</span>
@@ -26,7 +26,7 @@
 				</p>
 			</li>
 			<li>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, minima? 
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, minima?
 					<span>
 						<img src="assets/img/icons/success.svg" alt="">
 					</span>
@@ -44,7 +44,7 @@
 						<img src="assets/img/cancel.svg" alt="">
 					</span>
 				</p>
-			</li>
+			</li>-->
 			<li>
 				<p>
 					<span>
@@ -55,8 +55,8 @@
 			</li>
 		</ul>
 		<div class="meetings-btm">
-			<button class="danger-btn">imtina</button>
-			<button class="rounded-btn">yaddasha ver</button>
+			<button class="danger-btn" (click)="cancelEditing()">imtina</button>
+			<button class="rounded-btn" >yaddasha ver</button>
 		</div>
 	</div>
 </div>

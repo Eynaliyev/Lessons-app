@@ -19,7 +19,7 @@ export class UserService {
     public modules;
     private applicationsUrl;
     private modulesUrl;
-    private subModulesUrl; 
+    private subModulesUrl;
     private currentLanguage: ReplaySubject<string> = new ReplaySubject<string>();
 
     constructor(
@@ -27,7 +27,7 @@ export class UserService {
         private router: Router
     ) {}
     login(token, url) {
-        localStorage.setItem('currentUser', JSON.stringify({ 
+        localStorage.setItem('currentUser', JSON.stringify({
             token: token,
         }));
         // console.log('old token:', JSON.parse(localStorage.getItem('currentUser')).token);
@@ -38,14 +38,14 @@ export class UserService {
     }
     getCurrentLanguage(): ReplaySubject<string>{
         //console.log('res responses is: ', res);
-        return this.currentLanguage;    
+        return this.currentLanguage;
     }
     setCurrentLanguage(lang): void{
-        this.currentLanguage.next(lang);     
-        //console.log('set the currentLanguage to: ', this.currentLanguage);     
+        this.currentLanguage.next(lang);
+        //console.log('set the currentLanguage to: ', this.currentLanguage);
     }
     getLanguages(): Promise<any>{
-        let languages = ["az", "en", "ru"];    
+        let languages = ["az", "en", "ru"];
         let res = new Promise<any>((resolve, reject) => {
             //console.log('languages in getLanguages: ', languages);
             resolve(languages);
@@ -64,8 +64,8 @@ export class UserService {
     //get applications list to be shown in the header
     getApplications(): Promise<any>{
         return this.getToken().then(token =>{
-            this.applicationsUrl = `http://atis.edu.az/ROS/applications?token=${token}`;
-            //console.log('applicationsUrl: ', this.applicationsUrl);        
+            this.applicationsUrl = `http://192.168.1.78:8082/ROS/applications?token=${token}`;
+            //console.log('applicationsUrl: ', this.applicationsUrl);
             return this.http.get(this.applicationsUrl)
             .toPromise()
             .then(response => {
@@ -89,8 +89,8 @@ export class UserService {
     //get applications list to be shown in the header
     getModules(): Promise<any>{
         return this.getToken().then(token =>{
-            this.modulesUrl = `http://atis.edu.az/ROS/applications/1000003/modules?token=${token}`;
-            //console.log('modulesUrl: ', this.modulesUrl);        
+            this.modulesUrl = `http://192.168.1.78:8082/ROS/applications/1000003/modules?token=${token}`;
+            //console.log('modulesUrl: ', this.modulesUrl);
             return this.http.get(this.modulesUrl)
             .toPromise();
             /* - I have no idea why it's not working - as soon as I use return, it empties the array
@@ -115,7 +115,7 @@ export class UserService {
         return mod;
     }
 /*
-            this.user.imgUrl = `http://atis.edu.az/AdministrationRest/users/${user.id}/image?token=${token}`;
+            this.user.imgUrl = `http://192.168.1.78:8082/AdministrationRest/users/${user.id}/image?token=${token}`;
             //this.user = user;
             this.user.id = user.id;
             this.user.name = user.person.name + " " + user.person.patronymic + " " + user.person.surname;
@@ -135,6 +135,7 @@ export class UserService {
                 id: r.structure.id
             }
         });
+        console.log(user);
       return user;
     }
 
@@ -167,8 +168,8 @@ export class UserService {
             email: obj.contacts,// to be added
             facebook: obj.contacts,// to be added
             google: obj.contacts,// to be added
-            imgUrl: `http://atis.edu.az/UnibookHsisRest/students/${obj.id}/image?token=${token}`,
-            coverImgUrl: `http://atis.edu.az/UnibookHsisRest/students/${obj.id}/coverImage?token=${token}`,
+            imgUrl: `http://192.168.1.78:8082/UnibookHsisRest/students/${obj.id}/image?token=${token}`,
+            coverImgUrl: `http://192.168.1.78:8082/UnibookHsisRest/students/${obj.id}/coverImage?token=${token}`,
             documents: obj.pelcDocuments, // to be adopted to the documents interface for properties to match
             subjects: [],// to be added LATER
             completedClasses: 0,// to be added LATER
@@ -179,7 +180,7 @@ export class UserService {
         });
       return user;
     }
-    // setting default values to object properties in case 
+    // setting default values to object properties in case
     // might have to convert into a promise
     setDefaults(obj) {
         //console.log('setting defaults in: ', obj)
@@ -200,8 +201,8 @@ export class UserService {
     // getting current user from the back-end
     getCurrentUser(): Promise<any> {
         return this.getToken().then(token => {
-            console.log('current user in local storage in getCurrentUser: ', token);
-            this.currentUserURL = `http://atis.edu.az/ROS/profile?token=${token}`;
+            console.log('current token in local storage in getCurrentUser: ', token);
+            this.currentUserURL = `http://192.168.1.78:8082/ROS/profile?token=${token}`;
             console.log('getCurrentUser from url: ', this.currentUserURL);
             return this.http.get(this.currentUserURL)
             .toPromise()
@@ -210,30 +211,30 @@ export class UserService {
                 // setting token in localStorage AFTER checking whether it's an authorized token
                 if (response.json().data){
                     let data = response.json().data;
-                    localStorage.setItem('currentUser', JSON.stringify({ 
+                    localStorage.setItem('currentUser', JSON.stringify({
                         token: token,
-                        structure: data.structure//,
-                        //name: data.person.name + data.person.patronymic
+                        structure: data.structure,
+                        // name: data.person.name + data.person.patronymic
                     }));
                     console.log('token, current user response', token, this.currentUserURL, response.json().data);
                     // getting user's modules
-                    //this.getModules().then(modules => this.modules = modules);
+                    // this.getModules().then(modules => this.modules = modules);
                     // need to find the module if where the parentid is 0
                     // initial navigation based on role id - no longer needed, might need to switch to navigating based on module id...
-                    //this.currentUserRoleId = this.currentUser.role.id;
+                    // this.currentUserRoleId = this.currentUser.role.id;
                     // check the user role
-                    //this.currentUserRole = this.currentRole(this.currentUserRoleId);
-                    //this.redirectUrl = this.setRedirectUrl(this.currentUserRoleId);
-                    //this.navigateTo(this.currentUserRoleId);
-                    //console.log('current user role:', this.currentUserRole);
-                    //set the user logged in variable to true
-                    //this.loggedIn = true;
-                    //console.log('set the user logged in variable');
+                    // this.currentUserRole = this.currentRole(this.currentUserRoleId);
+                    // this.redirectUrl = this.setRedirectUrl(this.currentUserRoleId);
+                    // this.navigateTo(this.currentUserRoleId);
+                    // console.log('current user role:', this.currentUserRole);
+                    // set the user logged in variable to true
+                    // this.loggedIn = true;
+                    // console.log('set the user logged in variable');
                     return this.toUser(response.json().data, token);
                 } else {
                     console.log('current user response', response);
                     // redirect to login if there's something wrong with login
-                    //window.location.href='http://atis.edu.az/';
+                    // window.location.href='http://192.168.1.78:8082/';
                 }
             })
             // handle errors - for now, just print them to the console
@@ -243,7 +244,7 @@ export class UserService {
 
     logout() {
         localStorage.removeItem('currentUser');
-        //window.location.href='http://atis.edu.az/';
+        //window.location.href='http://192.168.1.78:8082/';
     }
 
     private handleError(error: any): Promise<any> {
@@ -254,7 +255,7 @@ export class UserService {
     /*
     currentRole(roleId) {
         if (roleId != null ) {
-            console.log('current roleId ', roleId); 
+            console.log('current roleId ', roleId);
             if (roleId == 1000020) {
                 return "superAdmin";
             } else if (roleId == 1000029) {
@@ -268,7 +269,7 @@ export class UserService {
         } else {
             console.log('the roleID is null, do not have the user');
         }
-    }  
+    }
     // neds to be determined by module id and send to either dashboard or students list or teachers list
     setRedirectUrl(roleId) {
         if (roleId == 1000020) {

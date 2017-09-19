@@ -2,8 +2,8 @@
 	<div class="main-text-bottom st-block-style">
 		<ul class="info-coint-ul">
 			<li class="lessons-main-head"><h3>F</h3></li>
-			<li class="info-head">{{lesson.name | translate: currentLang }}</li>
-			<li>{{lesson.info | translate: currentLang }}</li>
+			<li class="info-head">{{lesson?.name | translate: currentLang }}</li>
+			<li>{{lesson?.info | translate: currentLang }}</li>
 		</ul>
 	</div>
 
@@ -14,7 +14,7 @@
 			</li>
 			<li>
 				<p>Telimci</p>
-				<p *ngFor="let employee of lesson.employees">{{employee.name | translate: currentLang }}</p>
+				<p *ngFor="let employee of lesson?.employees">{{employee?.fullname | translate: currentLang }}</p>
 			</li>
 		</ul>
 	</div>
@@ -26,7 +26,7 @@
 			</li>
 			<li>
 				<p>Telim dili</p>
-				<p *ngFor="let language of lesson.languages">{{language.name | translate: currentLang }}</p>
+				<p >{{lesson?.languages | translate: currentLang}}</p>
 			</li>
 		</ul>
 	</div>
@@ -38,11 +38,11 @@
 			</li>
 			<li class="info-head">
 				<p>Novbeti gorush</p>
-				<p>{{lesson.nextMeeting | translate: currentLang }}</p>
+				<p>{{lesson?.nextMeeting | translate: currentLang }}</p>
 			</li>
 			<li class="info-head">
 				<p>Movzunun ad</p>
-				<p>{{lesson.nextTopicName | translate: currentLang }}</p>
+				<p>{{lesson?.nextTopicName | translate: currentLang }}</p>
 			</li>
 			<li class="see-all-meetings"><a href="#" class="rounded-btn" (click)="navSelect('meeting'); false">butun gourshlere bax</a></li>
 		</ul>

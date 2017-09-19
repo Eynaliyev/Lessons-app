@@ -11,24 +11,24 @@
 	<!-- Aside -->
 	<aside class="left-aside structure-aside">
 		<div class="aside-content" *ngIf="university">
-			<university-aside 
-			[university]='university' 
-			[currentLang]="currentLang"></university-aside> 
+			<university-aside
+			[university]='university'
+			[currentLang]="currentLang"></university-aside>
 		</div>
 	</aside>
 	<!-- End Aside -->
 
 	<!-- Main Container -->
 	<div class="ov-hid">
-		<div class="main-container st-block-style vert-scroll">
-			<lessons-list 
+		<perfect-scrollbar class="main-container st-block-style vert-scroll">
+			<lessons-list
 			[loading]="loading"
 			(gotoInfo)='gotoInfo($event)'
 			[currentLang]="currentLang"
 			[lessons]='lessons'
 			(loadMore)='loadMoreLessons()'
 			></lessons-list>
-		</div>
+		</perfect-scrollbar>
 	</div>
 	<!-- End Main Container -->
 

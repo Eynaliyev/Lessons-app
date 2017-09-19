@@ -9,7 +9,7 @@
 	</div>
 	<img src="assets/img/icons/subject.svg" alt="" class="lesson-img">
 	<div class="main-text">
-		<h4>{{lesson.name  | translate: currentLang }}</h4>
+		<h4>{{lesson?.name  | translate: currentLang }}</h4>
 	</div>
 	<lesson-sub-header
 	[currentState]="currentState"

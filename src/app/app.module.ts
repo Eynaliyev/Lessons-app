@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { DropdownModule } from "ngx-dropdown";
 import { Ng2TableModule } from 'ng2-table/ng2-table';
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule} from "angular2-perfect-scrollbar";
 
 // services
 import { SpinnerService } from "./core/spinner/spinner.service";
@@ -72,6 +73,10 @@ import { LoaderComponent } from './shared/loader.component'
 import { FilterByUniDirective } from './shared/filter-by-uni.directive';
 import { SelectModule } from 'ng-select';
 import { LessonsListComponent } from './lessons/lessons-list/lessons-list.component';
+import { EditTopicDirective } from './shared/edit-topic.directive';
+import {LangButtonDirective} from "./shared/lang-button.directive";
+import {StudentChartsComponent} from "./shared/student-charts.component";
+import {TeacherChartsComponent} from "./shared/teacher-charts.component";
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http);
@@ -89,6 +94,7 @@ export function HttpLoaderFactory(http: Http) {
 		DropdownModule,
 		LoadersCssModule,
 		Ng2TableModule,
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -98,6 +104,7 @@ export function HttpLoaderFactory(http: Http) {
         })
 	],
 	declarations: [
+    LangButtonDirective,
 		InitializeDropdown,
 		AppComponent,
 		AuthComponent,
@@ -108,10 +115,10 @@ export function HttpLoaderFactory(http: Http) {
 		FirstLettersPipe,
 		DashboardComponent,
 		UniversityAsideComponent,
-		LessonMainComponent, 
-		LessonHeaderComponent, 
-		LessonSubHeaderComponent, 
-		LessonAboutComponent, 
+		LessonMainComponent,
+		LessonHeaderComponent,
+		LessonSubHeaderComponent,
+		LessonAboutComponent,
 		FinalJournalComponent,
 		IndependentWorkJournalComponent,
 		CourseWorkJournalComponent,
@@ -140,7 +147,10 @@ export function HttpLoaderFactory(http: Http) {
 		SearchPipe,
 		TranslatePipe,
 		SortPipe,
-		LessonsListComponent
+		LessonsListComponent,
+		EditTopicDirective,
+    StudentChartsComponent,
+    TeacherChartsComponent
 	],
 	providers: [
 		AuthGuard,

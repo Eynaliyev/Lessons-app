@@ -11,16 +11,16 @@ declare var imagesLoaded:any;
 	selector: 'lessons-list',
 	templateUrl: 'lessons-list.component.html'
 })
-export class LessonsListComponent implements OnInit { 
+export class LessonsListComponent implements OnInit {
 	@Input() loading: boolean;
 	@Input() currentLang;
 	@Output() loadMore = new EventEmitter<any>();
 	@Input() lessons;
 	@Output() gotoInfo = new EventEmitter<Lesson>();
 
-	ngOnInit(){
+	ngOnInit() {
 		// get students list by lessonid from a test back end
-		// initial query to only ask for the first page	
+		// initial query to only ask for the first page
 		this.loadMoreLessons();
 		console.log('current language in lesson list: ', this.currentLang);
 	}
@@ -28,8 +28,8 @@ export class LessonsListComponent implements OnInit {
 		this.loadMore.emit();
 	}
 	ngOnChanges(changes){
-		//console.log(changes);
-		$(document).ready(function(){
+		// console.log(changes);
+/*		$(document).ready(function(){
 			console.log('masonry working');
 			// init Isotope
 			var grid = document.querySelector('.grid');
@@ -44,7 +44,7 @@ export class LessonsListComponent implements OnInit {
 			  // layout Masonry after each image loads
 			  msnry.layout();
 			});
-		});
+		});*/
 	}
 	goInfo(lesson: Lesson){
 		console.log(lesson);

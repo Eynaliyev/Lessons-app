@@ -15,7 +15,7 @@ declare var $: any;
 	templateUrl: 'dashboard.component.html',
 	styleUrls: ['dashboard.component.css']
 })
-export class DashboardComponent implements OnInit { 
+export class DashboardComponent implements OnInit {
 	lesson: any;
 	currentModule;
 	lessons: Lesson[] = [];
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
 	ngOnInit(): void {
 	// the version with the real api
 		// getting user's org info
-		this.userService.getCurrentUser().then(user => { 
+		this.userService.getCurrentUser().then(user => {
 			this.user = user;
 			//console.log('current user in dashboard component: ', this.user)
 			this.universityService.getUniversityById(this.user.structure.id)
@@ -73,12 +73,12 @@ export class DashboardComponent implements OnInit {
 			.then(lessons => {
 				this.lessons = this.lessons.concat(lessons);
 				this.allLessons = this.allLessons.concat(lessons);
-				console.log("lessons list in the dashboard:", this.lessons);
+				console.log('lessons list in the dashboard:', this.lessons);
 				this.loading = false;
-			});	
+			});
 		}
 	}
-	gotoInfo(lesson: Lesson): void { 
+	gotoInfo(lesson: Lesson): void {
 		console.log(lesson);
 		let link = ['/lesson', lesson.id];
 		this.router.navigate(link);

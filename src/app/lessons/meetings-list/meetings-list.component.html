@@ -1,4 +1,4 @@
-<div class="meetings-first-blocks st-block-style" *ngFor="let topic of topics">
+<div class="meetings-first-blocks st-block-style" #top *ngFor="let topic of topics" >
 	<div class="meetings-title-first">
 		<div class="meetings-title-top">
 			<div class="more-btn">
@@ -9,8 +9,8 @@
 				<!-- more-icon popup -->
 				<div id="more-icon-in-block-1" class="popup more-icon-popup">
 					<div class="popup-content">
-						<ul class="icons-list">
-							<li><a href="#" class="icon-btn" title="edit"><img src="assets/img/icons/edit.svg"></a></li>
+						<ul class="icons-list" >
+							<li><button role="button" class="icon-btn"><img src="assets/img/icons/edit.svg" (click)="editTopic(topic)" popUp></button></li>
 							<li><a href="#" class="icon-btn" title="delete"><img src="assets/img/icons/delete.svg"></a></li>
 						</ul>
 					</div>
@@ -18,7 +18,7 @@
 				<!-- popup end -->
 			</div>
 			<h5>{{topic.name | translate: currentLang }}</h5>
-			<p>{{topic.about | translate: currentLang }}</p>	
+			<p>{{topic.about | translate: currentLang }}</p>
 		</div>
 		<br>
 		<div class="meetings-title-bottom">
@@ -45,3 +45,4 @@
 		</div>
 	</div>
 </div>
+<div #top1></div>

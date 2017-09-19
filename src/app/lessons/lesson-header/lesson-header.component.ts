@@ -1,23 +1,27 @@
-import { Component, Input, Output, EventEmitter  } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Lesson} from '../../shared/lesson.model';
 
 @Component({
-	
+
 	selector: 'lesson-header',
 	templateUrl: 'lesson-header.component.html'
-}) 
-export class LessonHeaderComponent {
+})
+export class LessonHeaderComponent implements OnInit{
 	@Input () currentState: string;
 	@Input() lesson;
 	@Input () states;
 	@Input() currentLang;
 	@Input() subState;
 
-	@Output() 
+	@Output()
 	select = new EventEmitter();
-	@Output() 
+	@Output()
 	updateSubState = new EventEmitter();
-	// event emitting method that changes the state in the parent component of lesson-main 
+	// event emitting method that changes the state in the parent component of lesson-main
 	// it gets called from nav buttons that control the in-page navigation
+  ngOnInit() {
+    console.log(this.lesson);
+  }
 	navSelect(value){
 		this.currentState = value;
 		if(value === 'meeting'){

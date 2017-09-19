@@ -1,36 +1,16 @@
 <header>
 	<a routerLink="/dashboard" routerLinkActive="active" class="header-logo">
-		<img src="assets/img/unibook.png" alt="">
+    <p style="font-size: 1.6em;color: white;">Tədris İnformasiya Sistemi</p>
 	</a>
 	<nav class="header-nav">
 		<ul>
-			<li>
-				<div class="dropdown" dropdown [dropdownToggle]="false">
-				    <a class="icon-btn white-color-btn open-popup" dropdown-open>{{currentLang}}</a>
-				    <ul class="dropdown-menu">
-				        <li *ngFor="let lang of languages" (click)="setLanguage(lang)"><a>{{lang}}</a></li>
-				    </ul>
-				</div>
-			</li>
-			<li class="header-system">
-				<a href="#" class="icon-btn white-color-btn open-popup" data-popup="system-popup" popUp>
-					<img src="assets/img/icons/set_system.svg" alt="">
-				</a>
-				<!-- App popup -->
-				<div id="system-popup" class="popup">
-					<div class="popup-content">
-						<ul class="system-select">
-							<li *ngFor="let application of applications">
-								<a routerLink="{{application.url}}" routerLinkActive="active" class="active-system system-btn">
-									<img [src]="application.imgUrl" default="assets/img/school.svg" alt="">
-									<div class="center">{{application.name | translate: currentLang }}</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- popup end -->
-			</li>
+
+      <li>
+        <div class="headerApps" #appsEl  >
+          <a *ngFor="let application of applications"  href="{{application.url}}?token={{token}}" >{{application?.name | translate: currentLang }} </a>
+        </div>
+      </li>
+
 			<li class="header-user">
 				<a class="open-popup" data-popup="login-popup" popUp>
 					<img class="header-profile-image" default="assets/images/user.png" [src]="user.imgUrl" default="assets/images/user.png" alt="">
@@ -59,7 +39,7 @@
 								</ul>
 							</div>
 							<div class="bottom-popup">
-								<a href="http://atis.edu.az/DashboardRest/index.html" class="danger-btn" (click)="logout()">ÇIXIŞ</a>
+								<a href="http://192.168.1.78:8082/DashboardRest/index.html" class="danger-btn" (click)="logout()">ÇIXIŞ</a>
 								<a routerLink="/user-profile" routerLinkActive="active" class="rounded-btn">MƏNİM SƏHİFƏM</a>
 							</div>
 						</div>

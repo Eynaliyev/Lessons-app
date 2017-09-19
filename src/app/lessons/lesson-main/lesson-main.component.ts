@@ -7,7 +7,7 @@ import { UserService } from '../../shared/user.service';
 @Component({
 	selector: 'lesson-main',
 	templateUrl: 'lesson-main.component.html'
-}) 
+})
 export class LessonMainComponent implements OnInit, OnChanges {
 	lesson: '';
 	currentLang;
@@ -17,7 +17,7 @@ export class LessonMainComponent implements OnInit, OnChanges {
 	teachers;
 	activityJournal = [[[]]];
 	finalJournal;
-	topics;
+	/*topics;*/
 	materials;
 	states = ['lesson-about', 'members-list', 'meeting', 'e-journal', 'final-journal', 'journal-add', 'journal-edit', 'meeting-files']
 
@@ -28,16 +28,24 @@ export class LessonMainComponent implements OnInit, OnChanges {
 		private userService: UserService) {}
 
 	ngOnInit(): void {
-		this.currentState ="lesson-about";	
+		this.currentState ="lesson-about";
 		this.route.params.forEach((params: Params) => {
 			let id = +params['id'];
 			// getting the lesson by its id from the server
-			this.lessonService.getLessonById(id)
+      this.lessonService.getLessonById2(id)
+        .subscribe((lesson) => {
+       /* alert('success');*/
+        this.lesson = lesson;
+        console.log(this.lesson);
+        console.log(lesson.languages)
+        }, () => alert('could not get lesson'));
+		/*	this.lessonService.getLessonById(id)
 			.then(lesson => {
+			  alert('sw');
 				this.lesson = lesson;
 				console.log('this lesson: ', lesson);
-			});
-			this.lessonService.getActivityJournal(id)
+			});*/
+			/*this.lessonService.getActivityJournal(id)
 			.then(activityJournal => {
 				//this.journal = activityJournal;
 				console.log('activityJournal in this lesson: ', activityJournal, this.activityJournal);
@@ -100,17 +108,13 @@ export class LessonMainComponent implements OnInit, OnChanges {
 					}
 				});
 				console.log('activity journal in lesson-main: ', this.activityJournal);
-			});
+			});*/
 			this.lessonService.getFinalJournal(id)
 			.then(finalJournal => {
 				this.finalJournal = finalJournal.journalResultList;
 				console.log('final journal in lesson-main: ', this.finalJournal);
 			});
-			this.lessonService.getTopics(id)
-			.then(topics => {
-				this.topics = topics;
-				console.log(' topics in this lesson: ', topics);
-			});
+
 			this.lessonService.getMaterials(id)
 			.then(materials => {
 				this.materials = materials;
@@ -121,16 +125,16 @@ export class LessonMainComponent implements OnInit, OnChanges {
 				this.students = students;
 				console.log('students in the lesson: ', students);
 			});
-			this.lessonService.getTeachersByLesson(id)
+		/*	this.lessonService.getTeachersByLesson(id)
 			.then(teachers => {
 				this.teachers = teachers;
 				console.log('teachers in the lesson: ', teachers);
-			});
+			});*/
 			this.userService.getCurrentLanguage().subscribe(currentLang => {
 				console.log('currentLanguage: ', currentLang);
 				this.currentLang = currentLang;
 			});
-		}); 
+		});
 	}
 	setCurrentState (event) {
 		this.currentState = event;

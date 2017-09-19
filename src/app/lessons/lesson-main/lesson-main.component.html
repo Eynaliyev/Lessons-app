@@ -1,8 +1,8 @@
 <custom-header></custom-header>
 <!-- main content second -->
-<main class="main-content main-content-second">
+<perfect-scrollbar class="main-content main-content-second" style="height: 92%">
 	<div class="container-fluid main-container-second">
-		<lesson-header 
+		<lesson-header
 		[currentState] = 'currentState'
 		[lesson] = 'lesson'
 		[currentLang]="currentLang"
@@ -12,22 +12,21 @@
 		(updateSubState)="setSubState($event)"></lesson-header>
 	</div>
 
-	<lesson-about  *ngIf="currentState == 'lesson-about'" 
+	<lesson-about  *ngIf="currentState == 'lesson-about'"
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
 	(select)="setCurrentState($event)"></lesson-about>
-	<members-list *ngIf="currentState == 'members-list'" 
+	<members-list *ngIf="currentState == 'members-list'"
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
-	[students]="students"></members-list>
-	<meeting *ngIf="currentState == 'meeting' || currentState == 'meeting-files'" 
+	[students]="lesson?.students"></members-list>
+	<meeting *ngIf="currentState == 'meeting' || currentState == 'meeting-files'"
 	[lesson] = 'lesson'
-	[topics]="topics"
 	[materials]="materials"
 	[currentLang]="currentLang"
 	[currentState]="currentState"
 	[subState]="subState"></meeting>
-	<e-journal 
+	<e-journal
 	*ngIf="currentState == 'journal-tab'"
 	[lesson] = 'lesson'
 	[currentLang]="currentLang"
@@ -36,5 +35,5 @@
 	[finalJournal]="finalJournal"
 	[subState]="subState"
 	(edit)="goToEdit()"></e-journal>
-</main>
+</perfect-scrollbar>
 

@@ -8,7 +8,7 @@ import { UniversityService } from './university.service';
 @Component({
 	selector: 'auth',
 	template: '<p>Loading...</p>'
-}) 
+})
 
 export class AuthComponent {
 	public token: string;
@@ -19,7 +19,7 @@ export class AuthComponent {
 		private route: ActivatedRoute,
 		private router: Router
 	) {}
-	
+
 	ngOnInit(): void {
 		console.log('auth component is alive!');
 		this.route
@@ -39,7 +39,7 @@ export class AuthComponent {
                 } else {
                     // return false to indicate failed login
                     // redirect to the main system if login failed
-                    //window.location.href='http://atis.edu.az/';
+                    //window.location.href='http://192.168.1.78:8082/';
                     return false;
                 }
 		});

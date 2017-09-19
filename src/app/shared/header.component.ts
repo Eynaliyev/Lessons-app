@@ -7,7 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 	selector: 'custom-header',
 	templateUrl: 'header.component.html'
 })
-export class HeaderComponent implements OnInit { 	
+export class HeaderComponent implements OnInit {
 	public redirectUrl;
 	public user = {
 		id: "",
@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
 	public applications;
 	public languages;
 	public currentLang;
+	public token;
 	constructor(private userService: UserService,
 		public translate: TranslateService) {
 	}
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit {
 		.then(user => {
 			this.user = user;
 			this.userService.getToken().then(token => {
+			  this.token = token;
 				this.backUrl = `/AdministrationSystemView?token=${token}`;
 				this.userService.getApplications().then(applications => {
 					this.applications = applications;
